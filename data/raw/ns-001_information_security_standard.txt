@@ -1,0 +1,8 @@
+Information Security Standard
+Document ID: NS-001
+Department: Security
+Owner: Security Team
+
+Enable MFA for company email, source-code repositories, and cloud consoles. Store API keys and access tokens in an approved secrets manager or protected environment variables. Never commit secrets to source control. Report suspected phishing or data exposure to the Security Team immediately.
+
+Synthetic sample content; not a real company policy.

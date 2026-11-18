@@ -1,0 +1,4 @@
+service_id,service_name,owner,support_sla_hours,criticality
+SVC-01,Document Ingestion,AI Platform Team,4,high
+SVC-02,Vector Index,AI Platform Team,2,critical
+SVC-03,Evaluation Dashboard,Data & Analytics,8,medium
