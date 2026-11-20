@@ -1,0 +1,7 @@
+{
+    "dimension": 384,
+    "total_vectors": 14,
+    "index_type": "IndexFlatIP",
+    "similarity_metric": "cosine_similarity",
+    "normalized_embeddings": true
+}

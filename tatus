@@ -1,0 +1,9 @@
+* [33mc83edbb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;32mbackup-before-secret-cleanup[m[33m)[m Stop tracking environment secrets
+* [33mf838625[m embeddings
+* [33m2a05930[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Add project title to README.md
+* [33m7dbc557[m pytest
+* [33md93f461[m upadate files
+*   [33mf1e7f81[m Merge remote-tracking branch 'origin/main'
+[32m|[m[33m\[m  
+[32m|[m * [33meb6465c[m Initial commit
+* [33madd4881[m Initial commit: Enterprise Advanced RAG Platform

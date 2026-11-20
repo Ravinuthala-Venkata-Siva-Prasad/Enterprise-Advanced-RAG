@@ -1,0 +1,21 @@
+retrieval:
+  dense: 
+    enabled: true
+    top_k: 10
+
+  sparse:
+    enabled: true
+    top_k: 10
+
+  hybrid:
+    enabled: true
+    dense_weight: 0.5
+    sparse_weight: 0.5
+    rrf_k: 60
+    top_k: 10
+
+  reranker:
+    enabled: true
+    model_name: cross-encoder/ms-marco-MiniLM-L-6-v2
+    top_k: 5
+    batch_size: 16
