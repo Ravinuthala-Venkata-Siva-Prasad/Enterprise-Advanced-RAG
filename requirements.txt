@@ -14,7 +14,6 @@ pandas
 faiss-cpu
 langchain-community
 rank-bm25
-langchain-openai
 python-dotenv
 presidio-analyzer
 presidio-anonymizer
@@ -25,3 +24,4 @@ httpx
 pydantic
 streamlit
 requests
+langchain_groq

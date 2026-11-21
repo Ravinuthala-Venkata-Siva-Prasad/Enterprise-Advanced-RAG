@@ -3,7 +3,7 @@ import uuid
 import requests
 import streamlit as st
 
-from api_client import RAGAPIClient
+from frontend.api_client import RAGAPIClient
 
 
 # ==================================================

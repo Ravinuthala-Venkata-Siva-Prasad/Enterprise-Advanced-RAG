@@ -1,7 +1,15 @@
 import requests
 
-from config import CHAT_ENDPOINT, HEALTH_ENDPOINT, API_BASE_URL
-
+from .config import (
+    CHAT_ENDPOINT,
+    HEALTH_ENDPOINT,
+    API_BASE_URL,
+)
+from frontend.config import (
+    CHAT_ENDPOINT,
+    HEALTH_ENDPOINT,
+    API_BASE_URL,
+)
 
 class RAGAPIClient:
     def __init__(self, timeout: int = 120):
