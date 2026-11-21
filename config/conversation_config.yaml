@@ -1,0 +1,17 @@
+conversation:
+  enabled: true
+
+  storage:
+    type: sqlite
+    database_path: data/conversations/chat_history.db
+
+  memory:
+    max_turns: 10
+
+  query_rewriting:
+    enabled: true
+    fallback_to_original_question: true
+
+  security:
+    isolate_sessions: true
+    store_api_keys: false

@@ -1,3 +1,4 @@
+
 from collections import defaultdict
 
 
@@ -13,13 +14,19 @@ class HybridRetriever:
     ):
 
         if dense_weight < 0 or sparse_weight < 0:
-            raise ValueError("Retrieval weights cannot be negative")
+            raise ValueError(
+                "Retrieval weights cannot be negative"
+            )
 
         if dense_weight + sparse_weight == 0:
-            raise ValueError("At least one retrieval weight must be positive")
+            raise ValueError(
+                "At least one retrieval weight must be positive"
+            )
 
         if rrf_k < 0:
-            raise ValueError("rrf_k cannot be negative")
+            raise ValueError(
+                "rrf_k cannot be negative"
+            )
 
         self.dense_retriever = dense_retriever
         self.sparse_retriever = sparse_retriever
@@ -28,26 +35,51 @@ class HybridRetriever:
         self.sparse_weight = sparse_weight
         self.rrf_k = rrf_k
 
+    # --------------------------------------------------
+    # DOCUMENT IDENTIFICATION
+    # --------------------------------------------------
+
     @staticmethod
     def _document_id(document):
 
         metadata = document.get("metadata", {})
 
-        chunk_id = metadata.get("chunk_id")
+        chunk_id = metadata.get(
+            "chunk_id",
+            document.get("chunk_id")
+        )
 
         if chunk_id:
             return str(chunk_id)
 
         return (
-            metadata.get("source", ""),
+            metadata.get(
+                "source",
+                document.get("source", "")
+            ),
             metadata.get("page_number", ""),
             document.get("page_content", "")
         )
 
-    def retrieve(self, query, top_k=10):
+    # --------------------------------------------------
+    # HYBRID RETRIEVAL
+    # --------------------------------------------------
+
+    def retrieve(
+        self,
+        query,
+        top_k=10
+    ):
+
+        if not isinstance(query, str) or not query.strip():
+            raise ValueError(
+                "Query cannot be empty"
+            )
 
         if top_k <= 0:
-            raise ValueError("top_k must be positive")
+            raise ValueError(
+                "top_k must be positive"
+            )
 
         dense_results = self.dense_retriever.retrieve(
             query,
@@ -62,27 +94,40 @@ class HybridRetriever:
         fused = {}
         scores = defaultdict(float)
 
-        for weight, results in [
-            (self.dense_weight, dense_results),
-            (self.sparse_weight, sparse_results)
-        ]:
+        retrieval_sources = [
+            (self.dense_weight, dense_results, "dense"),
+            (self.sparse_weight, sparse_results, "sparse")
+        ]
 
-            for rank, result in enumerate(results, start=1):
+        for weight, results, method in retrieval_sources:
+
+            for rank, result in enumerate(
+                results,
+                start=1
+            ):
 
                 document = result["document"]
-                doc_id = self._document_id(document)
 
-                scores[doc_id] += weight / (self.rrf_k + rank)
+                doc_id = self._document_id(
+                    document
+                )
+
+                # Reciprocal Rank Fusion.
+                scores[doc_id] += (
+                    weight / (self.rrf_k + rank)
+                )
 
                 if doc_id not in fused:
+
                     fused[doc_id] = {
                         "document": document,
                         "retrieval_methods": []
                     }
 
-                if result["retrieval_method"] not in fused[doc_id]["retrieval_methods"]:
+                if method not in fused[doc_id]["retrieval_methods"]:
+
                     fused[doc_id]["retrieval_methods"].append(
-                        result["retrieval_method"]
+                        method
                     )
 
         ranked = sorted(
@@ -100,3 +145,41 @@ class HybridRetriever:
             }
             for doc_id, _ in ranked[:top_k]
         ]
+
+    # --------------------------------------------------
+    # REFRESH DENSE AND SPARSE RETRIEVERS
+    # --------------------------------------------------
+
+    def refresh(self):
+
+        refresh_results = {}
+
+        # Refresh dense retriever.
+        dense_refresh = getattr(
+            self.dense_retriever,
+            "refresh",
+            None
+        )
+
+        if not callable(dense_refresh):
+            raise NotImplementedError(
+                "Dense retriever does not implement refresh()"
+            )
+
+        refresh_results["dense_documents"] = dense_refresh()
+
+        # Refresh sparse retriever.
+        sparse_refresh = getattr(
+            self.sparse_retriever,
+            "refresh",
+            None
+        )
+
+        if not callable(sparse_refresh):
+            raise NotImplementedError(
+                "Sparse retriever does not implement refresh()"
+            )
+
+        refresh_results["sparse_documents"] = sparse_refresh()
+
+        return refresh_results

@@ -1,0 +1,19 @@
+guardrails:
+  input:
+    max_length: 2000
+
+  injection:
+    enabled: true
+
+  relevance:
+    enabled: true
+    minimum_score: 0.15
+
+  citations:
+    enabled: true
+
+  pii:
+    enabled: true
+
+  faithfulness:
+    enabled: true

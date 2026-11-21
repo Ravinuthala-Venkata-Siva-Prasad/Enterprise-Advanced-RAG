@@ -19,7 +19,7 @@ class GroqLLMClient:
 
         if not api_key:
             raise ValueError(
-                "OPENAI_API_KEY is missing. Add it to your .env file."
+                "GROQ_API_KEY is missing. Add it to your .env file."
             )
 
         self.llm = ChatGroq(

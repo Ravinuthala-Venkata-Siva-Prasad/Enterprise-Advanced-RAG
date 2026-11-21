@@ -1,0 +1,27 @@
+
+[
+  {
+    "id": "RET-001",
+    "question": "What are the MFA requirements?",
+    "relevant_sources": [
+      "ns-001_information_security_standard.txt"
+    ],
+    "relevant_chunk_ids": []
+  },
+  {
+    "id": "RET-002",
+    "question": "How should API keys and access tokens be protected?",
+    "relevant_sources": [
+      "ns-001_information_security_standard.txt"
+    ],
+    "relevant_chunk_ids": []
+  },
+  {
+    "id": "RET-003",
+    "question": "How should suspected phishing or data exposure be reported?",
+    "relevant_sources": [
+      "ns-001_information_security_standard.txt"
+    ],
+    "relevant_chunk_ids": []
+  }
+]

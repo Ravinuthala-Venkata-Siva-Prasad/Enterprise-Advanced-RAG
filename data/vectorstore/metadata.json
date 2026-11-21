@@ -1,6 +1,6 @@
 {
     "dimension": 384,
-    "total_vectors": 14,
+    "total_vectors": 16,
     "index_type": "IndexFlatIP",
     "similarity_metric": "cosine_similarity",
     "normalized_embeddings": true

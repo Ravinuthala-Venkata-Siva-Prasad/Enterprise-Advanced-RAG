@@ -1,0 +1,24 @@
+[
+  {
+    "document_id": "34c06d02ed6e0108",
+    "filename": "ns-002_remote_work_policy.pdf",
+    "stored_filename": "34c06d02ed6e0108051896852ffe0950845d13286dd769768d969c6ed42fcb22.pdf",
+    "source": "D:\\Enterprise-Advanced-RAG\\data\\uploads\\34c06d02ed6e0108051896852ffe0950845d13286dd769768d969c6ed42fcb22.pdf",
+    "file_hash": "34c06d02ed6e0108051896852ffe0950845d13286dd769768d969c6ed42fcb22",
+    "file_size": 1938,
+    "total_chunks": 1,
+    "status": "indexed",
+    "uploaded_at": "2026-11-21T04:30:34.160518+00:00"
+  },
+  {
+    "document_id": "89a8386c1e029848",
+    "filename": "ns-001_information_security_standard.pdf",
+    "stored_filename": "89a8386c1e029848ec1d02d41ac830d78cee489fdef701c176f473664b5a25bd.pdf",
+    "source": "D:\\Enterprise-Advanced-RAG\\data\\uploads\\89a8386c1e029848ec1d02d41ac830d78cee489fdef701c176f473664b5a25bd.pdf",
+    "file_hash": "89a8386c1e029848ec1d02d41ac830d78cee489fdef701c176f473664b5a25bd",
+    "file_size": 1934,
+    "total_chunks": 1,
+    "status": "indexed",
+    "uploaded_at": "2026-11-21T04:31:27.710483+00:00"
+  }
+]

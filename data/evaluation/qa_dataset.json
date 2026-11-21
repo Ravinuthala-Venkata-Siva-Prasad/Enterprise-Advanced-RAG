@@ -1,165 +1,39 @@
 [
   {
     "id": "Q001",
-    "question": "How many annual leave days do full-time employees receive?",
-    "reference_answer": "18 working days per calendar year.",
-    "source_documents": [
-      "ns-003_leave_policy.txt",
-      "ns-003_leave_policy.pdf"
-    ],
-    "expected_facts": [
-      "18 working days",
-      "per calendar year"
-    ],
-    "answerable": true
+    "question": "What is the company security policy for MFA?",
+    "reference_answer": "MFA must be enabled for company email, source-code repositories, and cloud consoles.",
+    "answerable": true,
+    "relevant_sources": [
+      "ns-001_information_security_standard.txt",
+      "ns-001_information_security_standard.pdf"
+    ]
   },
   {
     "id": "Q002",
-    "question": "How many sick leave days are provided?",
-    "reference_answer": "8 working days per calendar year.",
-    "source_documents": [
-      "ns-003_leave_policy.txt"
-    ],
-    "expected_facts": [
-      "8 working days"
-    ],
-    "answerable": true
+    "question": "What is the company's remote work policy?",
+    "reference_answer": "Employees can work remotely up to three days per week with manager approval, using company-approved devices and VPN for internal systems.",
+    "answerable": true,
+    "relevant_sources": [
+      "ns-002_remote_work_policy.txt",
+      "ns-002_remote_work_policy.pdf"
+    ]
   },
   {
     "id": "Q003",
-    "question": "What is the remote work allowance?",
-    "reference_answer": "Up to three days per week with manager approval.",
-    "source_documents": [
-      "ns-002_remote_work_policy.txt",
-      "ns-002_remote_work_policy.pdf"
-    ],
-    "expected_facts": [
-      "three days per week",
-      "manager approval"
-    ],
-    "answerable": true
-  },
-  {
-    "id": "Q004",
-    "question": "Where should API keys be stored?",
-    "reference_answer": "In an approved secrets manager or protected environment variables; never in source control.",
-    "source_documents": [
-      "ns-001_information_security_standard.txt",
-      "ns-001_information_security_standard.pdf"
-    ],
-    "expected_facts": [
-      "secrets manager",
-      "environment variables"
-    ],
-    "answerable": true
-  },
-  {
-    "id": "Q005",
-    "question": "What is the meal reimbursement limit?",
-    "reference_answer": "INR 1,200 per person per day.",
-    "source_documents": [
+    "question": "How does the company handle expense reimbursement?",
+    "reference_answer": "Approved business travel meals are reimbursed up to INR 1,200 per person per day. Claims must be submitted within 30 calendar days with itemized receipts.",
+    "answerable": true,
+    "relevant_sources": [
+      "ns-004_business_expense_policy.txt",
       "ns-004_business_expense_policy.docx"
-    ],
-    "expected_facts": [
-      "INR 1,200",
-      "per person per day"
-    ],
-    "answerable": true
+    ]
   },
   {
-    "id": "Q006",
-    "question": "Within how many days must expenses be submitted?",
-    "reference_answer": "Within 30 calendar days.",
-    "source_documents": [
-      "ns-004_business_expense_policy.docx"
-    ],
-    "expected_facts": [
-      "30 calendar days"
-    ],
-    "answerable": true
-  },
-  {
-    "id": "Q007",
-    "question": "Which methods are combined in hybrid retrieval?",
-    "reference_answer": "Vector similarity and BM25 keyword search.",
-    "source_documents": [
-      "ns-005_rag_platform_architecture.txt"
-    ],
-    "expected_facts": [
-      "vector similarity",
-      "BM25"
-    ],
-    "answerable": true
-  },
-  {
-    "id": "Q008",
-    "question": "What are the initial chunk size and overlap?",
-    "reference_answer": "800 characters with 120 characters overlap.",
-    "source_documents": [
-      "ns-005_rag_platform_architecture.txt"
-    ],
-    "expected_facts": [
-      "800 characters",
-      "120 characters"
-    ],
-    "answerable": true
-  },
-  {
-    "id": "Q009",
-    "question": "What details should an incident report include?",
-    "reference_answer": "Time detected, affected system, observed symptoms, and actions already taken.",
-    "source_documents": [
-      "ns-006_incident_response_procedure.txt"
-    ],
-    "expected_facts": [
-      "time detected",
-      "affected system",
-      "observed symptoms"
-    ],
-    "answerable": true
-  },
-  {
-    "id": "Q010",
-    "question": "What is the support SLA for the Vector Index service?",
-    "reference_answer": "2 hours.",
-    "source_documents": [
-      "service_catalog.csv"
-    ],
-    "expected_facts": [
-      "2 hours"
-    ],
-    "answerable": true
-  },
-  {
-    "id": "Q011",
-    "question": "Who owns the data governance guideline?",
-    "reference_answer": "Data Governance Team.",
-    "source_documents": [
-      "ns-007_data_governance.html"
-    ],
-    "expected_facts": [
-      "Data Governance Team"
-    ],
-    "answerable": true
-  },
-  {
-    "id": "Q012",
-    "question": "What is the annual bonus percentage?",
-    "reference_answer": "The supplied documents do not specify an annual bonus percentage.",
-    "source_documents": [],
-    "expected_facts": [
-      "not specified"
-    ],
-    "answerable": false
-  },
-  {
-    "id": "Q013",
-    "question": "How many paid parental leave weeks are offered?",
-    "reference_answer": "The supplied documents do not specify paid parental leave duration.",
-    "source_documents": [],
-    "expected_facts": [
-      "not specified"
-    ],
-    "answerable": false
+    "id": "RET-004",
+    "question": "What is the employee bonus percentage?",
+    "is_answerable": false,
+    "relevant_sources": [],
+    "relevant_chunk_ids": []
   }
 ]
