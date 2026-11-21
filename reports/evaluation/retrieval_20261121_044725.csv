@@ -1,0 +1,5 @@
+﻿question,retrieved_count,precision@1,recall@1,hit_rate@1,ndcg@1,precision@3,recall@3,hit_rate@3,ndcg@3,precision@5,recall@5,hit_rate@5,ndcg@5,precision@10,recall@10,hit_rate@10,ndcg@10,mrr
+What is the company security policy for MFA?,5,1.0,0.5,1.0,1.0,0.6666666666666666,1.0,1.0,0.9197207891481876,0.4,1.0,1.0,0.9197207891481876,0.2,1.0,1.0,0.9197207891481876,1.0
+What is the company's remote work policy?,5,1.0,0.5,1.0,1.0,0.6666666666666666,1.0,1.0,1.0,0.4,1.0,1.0,1.0,0.2,1.0,1.0,1.0,1.0
+How does the company handle expense reimbursement?,5,1.0,0.5,1.0,1.0,0.6666666666666666,1.0,1.0,1.0,0.4,1.0,1.0,1.0,0.2,1.0,1.0,1.0,1.0
+What is the employee bonus percentage?,5,,,,,,,,,,,,,,,,,

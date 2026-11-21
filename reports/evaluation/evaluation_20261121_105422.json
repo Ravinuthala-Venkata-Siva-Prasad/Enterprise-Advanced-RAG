@@ -1,0 +1,140 @@
+{
+  "total_questions": 4,
+  "successful_questions": 4,
+  "failed_questions": 0,
+  "answerable_questions": 3,
+  "unanswerable_questions": 1,
+  "average_metrics": {
+    "token_f1": 0.4170800211976683,
+    "rouge_l_f1": 0.3950211976682565,
+    "faithfulness_lexical": 0.6964285714285714,
+    "answer_relevancy_lexical": 0.09343434343434344,
+    "citation_precision": 0.4,
+    "citation_recall": 0.625,
+    "abstention_correct": 1.0,
+    "unsupported_answer_rate": 0.0
+  },
+  "results": [
+    {
+      "id": "Q001",
+      "question": "What is the company security policy for MFA?",
+      "answer": "The company security policy requires that Multi‑Factor Authentication (MFA) be enabled for all company email accounts, source‑code repositories, and cloud console access. [ns-001_information_security_standard.txt]",
+      "answerable": true,
+      "contexts": [
+        "Information Security Standard\nDocument ID: NS-001\nDepartment: Security\nOwner: Security Team\n\nEnable MFA for company email, source-code repositories, and cloud consoles. Store API keys and access tokens in an approved secrets manager or protected environment variables. Never commit secrets to source control. Report suspected phishing or data exposure to the Security Team immediately.\n\nSynthetic sample content; not a real company policy.",
+        "Incident Response Procedure\nDocument ID: NS-006\nDepartment: Security\nOwner: Security Team\n\nReport suspected security incidents to the Security Team as soon as possible. Include the time detected, affected system, observed symptoms, and actions already taken. Do not delete logs or attempt independent remediation unless instructed by the incident lead.\n\nSynthetic sample content; not a real company policy.",
+        "Remote Work Policy\nDocument ID: NS-002\nDepartment: People Operations\nOwner: People Operations\n\nEmployees may work remotely up to three days per week with manager approval. Use company-approved devices and the company VPN for internal systems. Report a lost device or suspected account compromise to the IT Service Desk immediately. Remote-work arrangements are reviewed every six months.\n\nSynthetic sample content; not a real company policy.",
+        "Business Expense Policy\nDocument ID: NS-004 | Department: Finance | Owner: Finance Operations\nPolicy\nMeals during approved business travel are reimbursable up to INR 1,200 per person per day. Submit expenses through the expense portal within 30 calendar days. Itemized receipts are required. Personal purchases and traffic fines are not reimbursable.\nSynthetic sample content; not a real company policy.",
+        "Data Governance Guideline\nData Governance Guideline\nDocument ID: NS-007\nOwner: Data Governance Team\nRequirements\nDataset owners must document source, purpose, sensitivity classification, and retention period. Access must follow least privilege. Run data quality checks before publishing critical datasets. Escalate suspected unauthorized disclosure to the Security Team."
+      ],
+      "sources": [
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-001_information_security_standard.txt",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-006_incident_response_procedure.txt",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-002_remote_work_policy.txt",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-004_business_expense_policy.docx",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-007_data_governance.html"
+      ],
+      "metrics": {
+        "token_f1": 0.5945945945945945,
+        "rouge_l_f1": 0.5945945945945945,
+        "faithfulness_lexical": 0.5789473684210527,
+        "answer_relevancy_lexical": 0.2222222222222222,
+        "citation_precision": 0.2,
+        "citation_recall": 0.5,
+        "abstention_correct": 1.0,
+        "unsupported_answer_rate": 0.0
+      }
+    },
+    {
+      "id": "Q002",
+      "question": "What is the company's remote work policy?",
+      "answer": "The company allows employees to work remotely up to three days per week, subject to manager approval. Remote work must use company‑approved devices and the company VPN, and any lost device or suspected account compromise must be reported to the IT Service Desk immediately. Remote‑work arrangements are reviewed every six months. [ns-002_remote_work_policy.txt]",
+      "answerable": true,
+      "contexts": [
+        "Remote Work Policy\nDocument ID: NS-002\nDepartment: People Operations\nOwner: People Operations\n\nEmployees may work remotely up to three days per week with manager approval. Use company-approved devices and the company VPN for internal systems. Report a lost device or suspected account compromise to the IT Service Desk immediately. Remote-work arrangements are reviewed every six months.\n\nSynthetic sample content; not a real company policy.",
+        "Leave Policy\nDocument ID: NS-003\nDepartment: People Operations\nOwner: People Operations\n\nFull-time employees receive 18 working days of annual leave and 8 working days of sick leave per calendar year. Request annual leave at least five working days in advance, subject to manager approval. Up to five unused annual-leave days may be carried forward and must be used by 31 March.\n\nSynthetic sample content; not a real company policy.",
+        "Information Security Standard\nDocument ID: NS-001\nDepartment: Security\nOwner: Security Team\n\nEnable MFA for company email, source-code repositories, and cloud consoles. Store API keys and access tokens in an approved secrets manager or protected environment variables. Never commit secrets to source control. Report suspected phishing or data exposure to the Security Team immediately.\n\nSynthetic sample content; not a real company policy.",
+        "Incident Response Procedure\nDocument ID: NS-006\nDepartment: Security\nOwner: Security Team\n\nReport suspected security incidents to the Security Team as soon as possible. Include the time detected, affected system, observed symptoms, and actions already taken. Do not delete logs or attempt independent remediation unless instructed by the incident lead.\n\nSynthetic sample content; not a real company policy.",
+        "Business Expense Policy\nDocument ID: NS-004 | Department: Finance | Owner: Finance Operations\nPolicy\nMeals during approved business travel are reimbursable up to INR 1,200 per person per day. Submit expenses through the expense portal within 30 calendar days. Itemized receipts are required. Personal purchases and traffic fines are not reimbursable.\nSynthetic sample content; not a real company policy."
+      ],
+      "sources": [
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-002_remote_work_policy.txt",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-003_leave_policy.txt",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-001_information_security_standard.txt",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-006_incident_response_procedure.txt",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-004_business_expense_policy.docx"
+      ],
+      "metrics": {
+        "token_f1": 0.4266666666666667,
+        "rouge_l_f1": 0.4266666666666667,
+        "faithfulness_lexical": 0.9210526315789473,
+        "answer_relevancy_lexical": 0.09090909090909091,
+        "citation_precision": 0.2,
+        "citation_recall": 0.5,
+        "abstention_correct": 1.0,
+        "unsupported_answer_rate": 0.0
+      }
+    },
+    {
+      "id": "Q003",
+      "question": "How does the company handle expense reimbursement?",
+      "answer": "The company reimburses meals incurred during approved business travel up to INR 1,200 per person per day. Employees must submit expense claims through the expense portal within 30 calendar days, attaching itemized receipts. Personal purchases and traffic fines are not reimbursable. [ns-004_business_expense_policy.txt]",
+      "answerable": true,
+      "contexts": [
+        "Business Expense Policy\nDocument ID: NS-004\nDepartment: Finance\nOwner: Finance Operations\n\nMeals during approved business travel are reimbursable up to INR 1,200 per person per day. Submit expenses through the expense portal within 30 calendar days. Itemized receipts are required. Personal purchases and traffic fines are not reimbursable.\n\nSynthetic sample content; not a real company policy.",
+        "Remote Work Policy\nDocument ID: NS-002\nDepartment: People Operations\nOwner: People Operations\n\nEmployees may work remotely up to three days per week with manager approval. Use company-approved devices and the company VPN for internal systems. Report a lost device or suspected account compromise to the IT Service Desk immediately. Remote-work arrangements are reviewed every six months.\n\nSynthetic sample content; not a real company policy.",
+        "Leave Policy\nDocument ID: NS-003\nDepartment: People Operations\nOwner: People Operations\n\nFull-time employees receive 18 working days of annual leave and 8 working days of sick leave per calendar year. Request annual leave at least five working days in advance, subject to manager approval. Up to five unused annual-leave days may be carried forward and must be used by 31 March.\n\nSynthetic sample content; not a real company policy.",
+        "Incident Response Procedure\nDocument ID: NS-006\nDepartment: Security\nOwner: Security Team\n\nReport suspected security incidents to the Security Team as soon as possible. Include the time detected, affected system, observed symptoms, and actions already taken. Do not delete logs or attempt independent remediation unless instructed by the incident lead.\n\nSynthetic sample content; not a real company policy.",
+        "Information Security Standard\nDocument ID: NS-001\nDepartment: Security\nOwner: Security Team\n\nEnable MFA for company email, source-code repositories, and cloud consoles. Store API keys and access tokens in an approved secrets manager or protected environment variables. Never commit secrets to source control. Report suspected phishing or data exposure to the Security Team immediately.\n\nSynthetic sample content; not a real company policy."
+      ],
+      "sources": [
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-004_business_expense_policy.txt",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-002_remote_work_policy.txt",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-003_leave_policy.txt",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-006_incident_response_procedure.txt",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-001_information_security_standard.txt"
+      ],
+      "metrics": {
+        "token_f1": 0.6470588235294118,
+        "rouge_l_f1": 0.5588235294117647,
+        "faithfulness_lexical": 0.8857142857142857,
+        "answer_relevancy_lexical": 0.06060606060606061,
+        "citation_precision": 0.2,
+        "citation_recall": 0.5,
+        "abstention_correct": 1.0,
+        "unsupported_answer_rate": 0.0
+      }
+    },
+    {
+      "id": "RET-004",
+      "question": "What is the employee bonus percentage?",
+      "answer": "I cannot find this information in the provided documents.",
+      "answerable": false,
+      "contexts": [
+        "Leave Policy\nDocument ID: NS-003\nDepartment: People Operations\nOwner: People Operations\n\nFull-time employees receive 18 working days of annual leave and 8 working days of sick leave per calendar year. Request annual leave at least five working days in advance, subject to manager approval. Up to five unused annual-leave days may be carried forward and must be used by 31 March.\n\nSynthetic sample content; not a real company policy.",
+        "Business Expense Policy\nDocument ID: NS-004 | Department: Finance | Owner: Finance Operations\nPolicy\nMeals during approved business travel are reimbursable up to INR 1,200 per person per day. Submit expenses through the expense portal within 30 calendar days. Itemized receipts are required. Personal purchases and traffic fines are not reimbursable.\nSynthetic sample content; not a real company policy.",
+        "Remote Work Policy\nDocument ID: NS-002\nDepartment: People Operations\nOwner: People Operations\n\nEmployees may work remotely up to three days per week with manager approval. Use company-approved devices and the company VPN for internal systems. Report a lost device or suspected account compromise to the IT Service Desk immediately. Remote-work arrangements are reviewed every six months.\n\nSynthetic sample content; not a real company policy.",
+        "RAG Platform Architecture\nDocument ID: NS-005\nDepartment: Applied AI\nOwner: AI Platform Team\n\nThe RAG platform ingests PDF, DOCX, TXT, CSV, and HTML. Documents are parsed, enriched with source metadata, and split into chunks. Initial chunking is 800 characters with 120 characters overlap. Embeddings are stored in FAISS. Hybrid retrieval combines vector similarity with BM25 keyword search. Rerank candidates before generation when configured. Answers must cite sources and abstain when evidence is insufficient.\n\nSynthetic sample content; not a real company policy.",
+        "Information Security Standard\nDocument ID: NS-001\nDepartment: Security\nOwner: Security Team\nEnable MFA for company email, source-code repositories, and cloud consoles. Store API keys and\naccess tokens in an approved secrets manager or protected environment variables. Never commit\nsecrets to source control. Report suspected phishing or data exposure to the Security Team\nimmediately."
+      ],
+      "sources": [
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-003_leave_policy.txt",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-004_business_expense_policy.docx",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-002_remote_work_policy.txt",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-005_rag_platform_architecture.txt",
+        "D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-001_information_security_standard.pdf"
+      ],
+      "metrics": {
+        "token_f1": 0.0,
+        "rouge_l_f1": 0.0,
+        "faithfulness_lexical": 0.4,
+        "answer_relevancy_lexical": 0.0,
+        "citation_precision": 1.0,
+        "citation_recall": 1.0,
+        "abstention_correct": 1.0,
+        "unsupported_answer_rate": 0.0
+      }
+    }
+  ],
+  "failures": []
+}

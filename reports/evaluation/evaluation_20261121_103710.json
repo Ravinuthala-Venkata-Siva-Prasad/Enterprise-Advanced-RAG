@@ -1,0 +1,40 @@
+{
+  "total_questions": 4,
+  "successful_questions": 0,
+  "failed_questions": 4,
+  "answerable_questions": 3,
+  "unanswerable_questions": 1,
+  "average_metrics": {
+    "token_f1": 0.0,
+    "rouge_l_f1": 0.0,
+    "faithfulness_lexical": 0.0,
+    "answer_relevancy_lexical": 0.0,
+    "citation_precision": 0.0,
+    "citation_recall": 0.0,
+    "abstention_correct": 0.0,
+    "unsupported_answer_rate": 0.0
+  },
+  "results": [],
+  "failures": [
+    {
+      "index": 0,
+      "question": "What is the company security policy for MFA?",
+      "error": "Query cannot be empty"
+    },
+    {
+      "index": 1,
+      "question": "What is the company's remote work policy?",
+      "error": "Query cannot be empty"
+    },
+    {
+      "index": 2,
+      "question": "How does the company handle expense reimbursement?",
+      "error": "Query cannot be empty"
+    },
+    {
+      "index": 3,
+      "question": "What is the employee bonus percentage?",
+      "error": "Query cannot be empty"
+    }
+  ]
+}

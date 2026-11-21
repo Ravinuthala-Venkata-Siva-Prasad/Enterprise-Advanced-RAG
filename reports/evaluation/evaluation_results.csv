@@ -1,0 +1,5 @@
+id,question,retrieval_latency_ms,answer_latency_ms,recall@5,precision@5,mrr,map,ndcg@5,answerable,abstained,abstention_correct,exact_match,token_f1
+Q001,What is the company security policy for MFA?,257.40070000028936,1243.6452000038116,1.0,0.4,1.0,1.0,1.0,True,False,,0.0,0.31999999999999995
+Q002,What is the company's remote work policy?,226.13770000316435,1299.7462999992422,1.0,0.4,1.0,1.0,1.0,True,False,,0.0,0.2992125984251969
+Q003,How does the company handle expense reimbursement?,234.4422999958624,1639.5656000022427,1.0,0.4,1.0,1.0,1.0,True,False,,0.0,0.4036697247706422
+Q004,What is the employee bonus percentage?,205.60670000122627,905.8113000064623,,0.0,,,,False,True,True,,

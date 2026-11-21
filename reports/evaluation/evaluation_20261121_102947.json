@@ -1,0 +1,131 @@
+{
+  "total_questions": 4,
+  "successful_questions": 4,
+  "failed_questions": 0,
+  "answerable_questions": 3,
+  "unanswerable_questions": 1,
+  "average_metrics": {
+    "abstention_correct": 1.0,
+    "answer_relevancy_lexical": 0.4444444444444444,
+    "citation_precision": 0.75,
+    "citation_recall": 0.15000000000000002,
+    "faithfulness_lexical": 0.7629978820796611,
+    "rouge_l_f1": 0.5398262995695693,
+    "token_f1": 0.5764341322194771,
+    "unsupported_answer_rate": 0.0
+  },
+  "results": [
+    {
+      "id": "Q001",
+      "question": "What is the company security policy for MFA?",
+      "answerable": true,
+      "answer": "The company requires Multi‑Factor Authentication (MFA) to be enabled for all company email accounts, source‑code repositories, and cloud console access. [ns-001_information_security_standard.txt]",
+      "reference_answer": "MFA must be enabled for company email, source-code repositories, and cloud consoles.",
+      "abstained": false,
+      "retrieved_sources": [
+        "89a8386c1e029848ec1d02d41ac830d78cee489fdef701c176f473664b5a25bd.pdf",
+        "ns-001_information_security_standard.pdf",
+        "ns-001_information_security_standard.txt",
+        "ns-002_remote_work_policy.txt",
+        "ns-006_incident_response_procedure.txt"
+      ],
+      "cited_sources": [
+        "ns-001_information_security_standard.txt"
+      ],
+      "metrics": {
+        "abstention_correct": 1.0,
+        "token_f1": 0.6285714285714286,
+        "rouge_l_f1": 0.6285714285714286,
+        "faithfulness_lexical": 0.5294117647058824,
+        "answer_relevancy_lexical": 0.4,
+        "citation_precision": 1.0,
+        "citation_recall": 0.2
+      }
+    },
+    {
+      "id": "Q002",
+      "question": "What is the company's remote work policy?",
+      "answerable": true,
+      "answer": "The company allows employees to work remotely up to three days per week, subject to manager approval. Remote work must be performed on company‑approved devices using the company VPN for internal systems. Any lost device or suspected account compromise must be reported immediately to the IT Service Desk. Remote‑work arrangements are reviewed every six months. [ns-002_remote_work_policy.txt]",
+      "reference_answer": "Employees can work remotely up to three days per week with manager approval, using company-approved devices and VPN for internal systems.",
+      "abstained": false,
+      "retrieved_sources": [
+        "34c06d02ed6e0108051896852ffe0950845d13286dd769768d969c6ed42fcb22.pdf",
+        "ns-001_information_security_standard.txt",
+        "ns-002_remote_work_policy.pdf",
+        "ns-002_remote_work_policy.txt",
+        "ns-003_leave_policy.txt"
+      ],
+      "cited_sources": [
+        "ns-002_remote_work_policy.txt"
+      ],
+      "metrics": {
+        "abstention_correct": 1.0,
+        "token_f1": 0.481012658227848,
+        "rouge_l_f1": 0.4556962025316456,
+        "faithfulness_lexical": 0.9024390243902439,
+        "answer_relevancy_lexical": 0.6,
+        "citation_precision": 1.0,
+        "citation_recall": 0.2
+      }
+    },
+    {
+      "id": "Q003",
+      "question": "How does the company handle expense reimbursement?",
+      "answerable": true,
+      "answer": "The company reimburses meals incurred during approved business travel up to **INR 1,200 per person per day**. Employees must submit expense claims through the expense portal **within 30 calendar days** of the expense, providing **itemized receipts**. Personal purchases and traffic fines are **not reimbursable**. [ns-004_business_expense_policy.txt]",
+      "reference_answer": "Approved business travel meals are reimbursed up to INR 1,200 per person per day. Claims must be submitted within 30 calendar days with itemized receipts.",
+      "abstained": false,
+      "retrieved_sources": [
+        "34c06d02ed6e0108051896852ffe0950845d13286dd769768d969c6ed42fcb22.pdf",
+        "ns-002_remote_work_policy.pdf",
+        "ns-002_remote_work_policy.txt",
+        "ns-004_business_expense_policy.docx",
+        "ns-004_business_expense_policy.txt"
+      ],
+      "cited_sources": [
+        "ns-004_business_expense_policy.txt"
+      ],
+      "metrics": {
+        "abstention_correct": 1.0,
+        "token_f1": 0.6197183098591549,
+        "rouge_l_f1": 0.5352112676056338,
+        "faithfulness_lexical": 0.8571428571428571,
+        "answer_relevancy_lexical": 0.3333333333333333,
+        "citation_precision": 1.0,
+        "citation_recall": 0.2
+      }
+    },
+    {
+      "id": "RET-004",
+      "question": "What is the employee bonus percentage?",
+      "answerable": false,
+      "answer": "I cannot find this information in the provided documents.",
+      "reference_answer": null,
+      "abstained": true,
+      "retrieved_sources": [
+        "ns-002_remote_work_policy.txt",
+        "ns-003_leave_policy.pdf",
+        "ns-003_leave_policy.txt",
+        "ns-004_business_expense_policy.docx",
+        "ns-004_business_expense_policy.txt"
+      ],
+      "cited_sources": [],
+      "metrics": {
+        "abstention_correct": 1.0,
+        "unsupported_answer_rate": 0.0,
+        "citation_precision": 0.0,
+        "citation_recall": 0.0
+      }
+    }
+  ],
+  "errors": [],
+  "metric_notes": {
+    "token_f1": "Lexical overlap with reference; not semantic correctness.",
+    "rouge_l_f1": "Longest-common-subsequence overlap; not semantic correctness.",
+    "faithfulness_lexical": "Content-word coverage in retrieved context; not entailment.",
+    "answer_relevancy_lexical": "Question-answer content-word overlap.",
+    "citation_precision_recall": "Filename matching only; not claim-level citation validation.",
+    "abstention_correct": "Checks whether a configured abstention phrase matches answerability."
+  }
+}

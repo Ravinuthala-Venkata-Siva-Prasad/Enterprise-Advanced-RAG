@@ -1,0 +1,15 @@
+{
+    "recall@5": 1.0,
+    "precision@5": 0.30000000000000004,
+    "mrr": 1.0,
+    "map": 1.0,
+    "ndcg@5": 1.0,
+    "exact_match": 0.0,
+    "token_f1": 0.340960774398613,
+    "average_retrieval_latency_ms": 230.8968500001356,
+    "average_answer_latency_ms": 1272.1921000029397,
+    "answerable_questions": 3,
+    "unanswerable_questions": 1,
+    "correct_abstentions": 1,
+    "abstention_accuracy": 1.0
+}

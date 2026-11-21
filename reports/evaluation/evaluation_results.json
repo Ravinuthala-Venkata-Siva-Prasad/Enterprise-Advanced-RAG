@@ -1,0 +1,127 @@
+[
+    {
+        "id": "Q001",
+        "question": "What is the company security policy for MFA?",
+        "answer": "Answer:\nThe company’s security policy requires that multi‑factor authentication (MFA) be enabled for company email, source‑code repositories, and cloud consoles.\n\nSources:\n- D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-001_information_security_standard.txt | CHUNK: fc09f34b-558f-4ac2-9b8a-82e5d637085b\n- D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-001_information_security_standard.pdf | CHUNK: 46610f92-5a58-49a7-9fd6-e04d9b9197af | PAGE: 1",
+        "retrieved_sources": [
+            "ns-001_information_security_standard.txt",
+            "ns-001_information_security_standard.pdf",
+            "ns-006_incident_response_procedure.txt",
+            "ns-002_remote_work_policy.txt",
+            "ns-002_remote_work_policy.pdf"
+        ],
+        "relevant_sources": [
+            "ns-001_information_security_standard.txt",
+            "ns-001_information_security_standard.pdf"
+        ],
+        "retrieval_metrics": {
+            "recall@5": 1.0,
+            "precision@5": 0.4,
+            "mrr": 1.0,
+            "map": 1.0,
+            "ndcg@5": 1.0
+        },
+        "answer_metrics": {
+            "answerable": true,
+            "abstained": false,
+            "abstention_correct": null,
+            "exact_match": 0.0,
+            "token_f1": 0.31999999999999995
+        },
+        "retrieval_latency_ms": 257.40070000028936,
+        "answer_latency_ms": 1243.6452000038116
+    },
+    {
+        "id": "Q002",
+        "question": "What is the company's remote work policy?",
+        "answer": "Answer:\nThe company allows employees to work remotely up to three days per week, provided they have manager approval. Remote work must be performed on company‑approved devices and accessed through the company VPN for internal systems. If a device is lost or an account compromise is suspected, it must be reported immediately to the IT Service Desk. Remote‑work arrangements are reviewed every six months.\n\nSources:\n- D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-002_remote_work_policy.txt | CHUNK: dc52b6ca-4779-45f4-b8d4-f3f0a58a920c\n- D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-002_remote_work_policy.pdf | CHUNK: 5536ea44-e0cc-4ef9-bf28-c53856f49918 | PAGE: 1",
+        "retrieved_sources": [
+            "ns-002_remote_work_policy.txt",
+            "ns-002_remote_work_policy.pdf",
+            "ns-003_leave_policy.txt",
+            "ns-001_information_security_standard.txt",
+            "ns-006_incident_response_procedure.txt"
+        ],
+        "relevant_sources": [
+            "ns-002_remote_work_policy.pdf",
+            "ns-002_remote_work_policy.txt"
+        ],
+        "retrieval_metrics": {
+            "recall@5": 1.0,
+            "precision@5": 0.4,
+            "mrr": 1.0,
+            "map": 1.0,
+            "ndcg@5": 1.0
+        },
+        "answer_metrics": {
+            "answerable": true,
+            "abstained": false,
+            "abstention_correct": null,
+            "exact_match": 0.0,
+            "token_f1": 0.2992125984251969
+        },
+        "retrieval_latency_ms": 226.13770000316435,
+        "answer_latency_ms": 1299.7462999992422
+    },
+    {
+        "id": "Q003",
+        "question": "How does the company handle expense reimbursement?",
+        "answer": "Answer:\nThe company reimburses meals incurred during approved business travel up to INR 1,200 per person per day. Employees must submit expense claims through the expense portal within 30 calendar days, and itemized receipts are required. Personal purchases and traffic fines are excluded from reimbursement.\n\nSources:\n- D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-004_business_expense_policy.txt | CHUNK: 25b1d7ec-9fbc-4708-a6fd-681005606141\n- D:\\Enterprise-Advanced-RAG\\data\\raw\\ns-004_business_expense_policy.docx | CHUNK: 56f00e1d-10cf-407c-a32f-8c976e4e987c",
+        "retrieved_sources": [
+            "ns-004_business_expense_policy.txt",
+            "ns-004_business_expense_policy.docx",
+            "ns-002_remote_work_policy.txt",
+            "ns-002_remote_work_policy.pdf",
+            "ns-003_leave_policy.txt"
+        ],
+        "relevant_sources": [
+            "ns-004_business_expense_policy.docx",
+            "ns-004_business_expense_policy.txt"
+        ],
+        "retrieval_metrics": {
+            "recall@5": 1.0,
+            "precision@5": 0.4,
+            "mrr": 1.0,
+            "map": 1.0,
+            "ndcg@5": 1.0
+        },
+        "answer_metrics": {
+            "answerable": true,
+            "abstained": false,
+            "abstention_correct": null,
+            "exact_match": 0.0,
+            "token_f1": 0.4036697247706422
+        },
+        "retrieval_latency_ms": 234.4422999958624,
+        "answer_latency_ms": 1639.5656000022427
+    },
+    {
+        "id": "Q004",
+        "question": "What is the employee bonus percentage?",
+        "answer": "Answer:\nI could not find sufficient information in the provided documents.\n\nSources:",
+        "retrieved_sources": [
+            "ns-003_leave_policy.txt",
+            "ns-003_leave_policy.pdf",
+            "ns-004_business_expense_policy.docx",
+            "ns-004_business_expense_policy.txt",
+            "ns-002_remote_work_policy.txt"
+        ],
+        "relevant_sources": [],
+        "retrieval_metrics": {
+            "recall@5": null,
+            "precision@5": 0.0,
+            "mrr": null,
+            "map": null,
+            "ndcg@5": null
+        },
+        "answer_metrics": {
+            "answerable": false,
+            "abstained": true,
+            "abstention_correct": true,
+            "exact_match": null,
+            "token_f1": null
+        },
+        "retrieval_latency_ms": 205.60670000122627,
+        "answer_latency_ms": 905.8113000064623
+    }
+]

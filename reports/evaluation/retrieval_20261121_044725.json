@@ -1,0 +1,194 @@
+{
+    "total_questions": 4,
+    "successful_questions": 4,
+    "answerable_questions": 3,
+    "unanswerable_questions": 1,
+    "failed_questions": 0,
+    "average_metrics": {
+        "precision@1": 1.0,
+        "recall@1": 0.5,
+        "hit_rate@1": 1.0,
+        "ndcg@1": 1.0,
+        "precision@3": 0.6666666666666666,
+        "recall@3": 1.0,
+        "hit_rate@3": 1.0,
+        "ndcg@3": 0.9732402630493958,
+        "precision@5": 0.4000000000000001,
+        "recall@5": 1.0,
+        "hit_rate@5": 1.0,
+        "ndcg@5": 0.9732402630493958,
+        "precision@10": 0.20000000000000004,
+        "recall@10": 1.0,
+        "hit_rate@10": 1.0,
+        "ndcg@10": 0.9732402630493958,
+        "mrr": 1.0
+    },
+    "results": [
+        {
+            "question": "What is the company security policy for MFA?",
+            "is_answerable": true,
+            "retrieved_count": 5,
+            "retrieved_chunk_ids": [
+                "fc09f34b-558f-4ac2-9b8a-82e5d637085b",
+                "744e5299-6fd4-4962-9c43-6f6f92c22fac",
+                "46610f92-5a58-49a7-9fd6-e04d9b9197af",
+                "ca5f49a7-1564-4297-9c98-f987aa8c46b4",
+                "dc52b6ca-4779-45f4-b8d4-f3f0a58a920c"
+            ],
+            "retrieved_sources": [
+                "d:/enterprise-advanced-rag/data/raw/ns-001_information_security_standard.txt",
+                "d:/enterprise-advanced-rag/data/uploads/89a8386c1e029848ec1d02d41ac830d78cee489fdef701c176f473664b5a25bd.pdf",
+                "d:/enterprise-advanced-rag/data/raw/ns-001_information_security_standard.pdf",
+                "d:/enterprise-advanced-rag/data/raw/ns-006_incident_response_procedure.txt",
+                "d:/enterprise-advanced-rag/data/raw/ns-002_remote_work_policy.txt"
+            ],
+            "status": "evaluated",
+            "relevance_type": "source",
+            "relevance_flags": [
+                true,
+                false,
+                true,
+                false,
+                false
+            ],
+            "metrics": {
+                "precision@1": 1.0,
+                "recall@1": 0.5,
+                "hit_rate@1": 1.0,
+                "ndcg@1": 1.0,
+                "precision@3": 0.6666666666666666,
+                "recall@3": 1.0,
+                "hit_rate@3": 1.0,
+                "ndcg@3": 0.9197207891481876,
+                "precision@5": 0.4,
+                "recall@5": 1.0,
+                "hit_rate@5": 1.0,
+                "ndcg@5": 0.9197207891481876,
+                "precision@10": 0.2,
+                "recall@10": 1.0,
+                "hit_rate@10": 1.0,
+                "ndcg@10": 0.9197207891481876,
+                "mrr": 1.0
+            }
+        },
+        {
+            "question": "What is the company's remote work policy?",
+            "is_answerable": true,
+            "retrieved_count": 5,
+            "retrieved_chunk_ids": [
+                "dc52b6ca-4779-45f4-b8d4-f3f0a58a920c",
+                "5536ea44-e0cc-4ef9-bf28-c53856f49918",
+                "cb9adec0-5e49-4d0e-a50e-89cac84ca237",
+                "5d4d4b00-2e07-4ae0-b09f-956ace4e2403",
+                "fc09f34b-558f-4ac2-9b8a-82e5d637085b"
+            ],
+            "retrieved_sources": [
+                "d:/enterprise-advanced-rag/data/raw/ns-002_remote_work_policy.txt",
+                "d:/enterprise-advanced-rag/data/raw/ns-002_remote_work_policy.pdf",
+                "d:/enterprise-advanced-rag/data/uploads/34c06d02ed6e0108051896852ffe0950845d13286dd769768d969c6ed42fcb22.pdf",
+                "d:/enterprise-advanced-rag/data/raw/ns-003_leave_policy.txt",
+                "d:/enterprise-advanced-rag/data/raw/ns-001_information_security_standard.txt"
+            ],
+            "status": "evaluated",
+            "relevance_type": "source",
+            "relevance_flags": [
+                true,
+                true,
+                false,
+                false,
+                false
+            ],
+            "metrics": {
+                "precision@1": 1.0,
+                "recall@1": 0.5,
+                "hit_rate@1": 1.0,
+                "ndcg@1": 1.0,
+                "precision@3": 0.6666666666666666,
+                "recall@3": 1.0,
+                "hit_rate@3": 1.0,
+                "ndcg@3": 1.0,
+                "precision@5": 0.4,
+                "recall@5": 1.0,
+                "hit_rate@5": 1.0,
+                "ndcg@5": 1.0,
+                "precision@10": 0.2,
+                "recall@10": 1.0,
+                "hit_rate@10": 1.0,
+                "ndcg@10": 1.0,
+                "mrr": 1.0
+            }
+        },
+        {
+            "question": "How does the company handle expense reimbursement?",
+            "is_answerable": true,
+            "retrieved_count": 5,
+            "retrieved_chunk_ids": [
+                "25b1d7ec-9fbc-4708-a6fd-681005606141",
+                "56f00e1d-10cf-407c-a32f-8c976e4e987c",
+                "dc52b6ca-4779-45f4-b8d4-f3f0a58a920c",
+                "5536ea44-e0cc-4ef9-bf28-c53856f49918",
+                "cb9adec0-5e49-4d0e-a50e-89cac84ca237"
+            ],
+            "retrieved_sources": [
+                "d:/enterprise-advanced-rag/data/raw/ns-004_business_expense_policy.txt",
+                "d:/enterprise-advanced-rag/data/raw/ns-004_business_expense_policy.docx",
+                "d:/enterprise-advanced-rag/data/raw/ns-002_remote_work_policy.txt",
+                "d:/enterprise-advanced-rag/data/raw/ns-002_remote_work_policy.pdf",
+                "d:/enterprise-advanced-rag/data/uploads/34c06d02ed6e0108051896852ffe0950845d13286dd769768d969c6ed42fcb22.pdf"
+            ],
+            "status": "evaluated",
+            "relevance_type": "source",
+            "relevance_flags": [
+                true,
+                true,
+                false,
+                false,
+                false
+            ],
+            "metrics": {
+                "precision@1": 1.0,
+                "recall@1": 0.5,
+                "hit_rate@1": 1.0,
+                "ndcg@1": 1.0,
+                "precision@3": 0.6666666666666666,
+                "recall@3": 1.0,
+                "hit_rate@3": 1.0,
+                "ndcg@3": 1.0,
+                "precision@5": 0.4,
+                "recall@5": 1.0,
+                "hit_rate@5": 1.0,
+                "ndcg@5": 1.0,
+                "precision@10": 0.2,
+                "recall@10": 1.0,
+                "hit_rate@10": 1.0,
+                "ndcg@10": 1.0,
+                "mrr": 1.0
+            }
+        },
+        {
+            "question": "What is the employee bonus percentage?",
+            "is_answerable": false,
+            "retrieved_count": 5,
+            "retrieved_chunk_ids": [
+                "5d4d4b00-2e07-4ae0-b09f-956ace4e2403",
+                "dc39af63-e327-414d-9b73-2573e21e2815",
+                "56f00e1d-10cf-407c-a32f-8c976e4e987c",
+                "25b1d7ec-9fbc-4708-a6fd-681005606141",
+                "dc52b6ca-4779-45f4-b8d4-f3f0a58a920c"
+            ],
+            "retrieved_sources": [
+                "d:/enterprise-advanced-rag/data/raw/ns-003_leave_policy.txt",
+                "d:/enterprise-advanced-rag/data/raw/ns-003_leave_policy.pdf",
+                "d:/enterprise-advanced-rag/data/raw/ns-004_business_expense_policy.docx",
+                "d:/enterprise-advanced-rag/data/raw/ns-004_business_expense_policy.txt",
+                "d:/enterprise-advanced-rag/data/raw/ns-002_remote_work_policy.txt"
+            ],
+            "status": "unanswerable",
+            "relevance_type": null,
+            "relevance_flags": [],
+            "metrics": {}
+        }
+    ],
+    "errors": [],
+    "generated_at_utc": "2026-11-21T04:47:25.130456+00:00"
+}

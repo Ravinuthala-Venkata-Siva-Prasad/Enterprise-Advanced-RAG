@@ -1,0 +1,15 @@
+{
+    "number_of_embeddings": 14,
+    "embedding_dimension": 384,
+    "average_vector_norm": 1.0,
+    "minimum_vector_norm": 0.9999999403953552,
+    "maximum_vector_norm": 1.0,
+    "all_finite": true,
+    "normalized": true,
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "query_latency": {
+        "average_latency_ms": 8.978859999479027,
+        "minimum_latency_ms": 8.246499997767387,
+        "maximum_latency_ms": 9.982299998227973
+    }
+}

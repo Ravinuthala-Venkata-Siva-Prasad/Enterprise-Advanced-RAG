@@ -27,7 +27,7 @@ htmlcov/
 *.pkl
 *.faiss
 
-reports/
+
 .env
 .env.*
 !.env.example

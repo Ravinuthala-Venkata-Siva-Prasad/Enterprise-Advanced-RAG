@@ -1,0 +1,84 @@
+{
+  "total_questions": 4,
+  "successful_questions": 4,
+  "failed_questions": 0,
+  "answerable_questions": 3,
+  "unanswerable_questions": 1,
+  "average_metrics": {
+    "token_f1": 0.4308224346076459,
+    "rouge_l_f1": 0.4096956740442656,
+    "faithfulness_lexical": 0.5871333029335766,
+    "answer_relevancy_lexical": 0.08018529893529894,
+    "citation_precision": 0.55,
+    "citation_recall": 1.0,
+    "abstention_correct": 1.0,
+    "unsupported_answer_rate": 0.0
+  },
+  "results": [
+    {
+      "id": "Q001",
+      "question": "What is the company security policy for MFA?",
+      "answer": "The company requires Multi‑Factor Authentication (MFA) to be enabled for all company email accounts, source‑code repositories, and cloud console access. [ns-001_information_security_standard.txt]",
+      "answerable": true,
+      "metrics": {
+        "token_f1": 0.6285714285714286,
+        "rouge_l_f1": 0.6285714285714286,
+        "faithfulness_lexical": 0.5294117647058824,
+        "answer_relevancy_lexical": 0.125,
+        "citation_precision": 0.4,
+        "citation_recall": 1.0,
+        "abstention_correct": 1.0,
+        "unsupported_answer_rate": 0.0
+      }
+    },
+    {
+      "id": "Q002",
+      "question": "What is the company's remote work policy?",
+      "answer": "The company’s remote work policy allows employees to work remotely up to three days per week, subject to manager approval. Employees must use company‑approved devices and the company VPN for internal systems, and must report any lost device or suspected account compromise to the IT Service Desk immediately. Remote‑work arrangements are reviewed every six months. [ns-002_remote_work_policy.txt]",
+      "answerable": true,
+      "metrics": {
+        "token_f1": 0.47500000000000003,
+        "rouge_l_f1": 0.47500000000000003,
+        "faithfulness_lexical": 0.9302325581395349,
+        "answer_relevancy_lexical": 0.13513513513513514,
+        "citation_precision": 0.4,
+        "citation_recall": 1.0,
+        "abstention_correct": 1.0,
+        "unsupported_answer_rate": 0.0
+      }
+    },
+    {
+      "id": "Q003",
+      "question": "How does the company handle expense reimbursement?",
+      "answer": "The company reimburses meals incurred during approved business travel up to **INR 1,200 per person per day**. Employees must submit expense claims through the expense portal **within 30 calendar days** of the expense, providing **itemized receipts**. Personal purchases and traffic fines are **not reimbursable**. [ns-004_business_expense_policy.txt]",
+      "answerable": true,
+      "metrics": {
+        "token_f1": 0.6197183098591549,
+        "rouge_l_f1": 0.5352112676056338,
+        "faithfulness_lexical": 0.8888888888888888,
+        "answer_relevancy_lexical": 0.06060606060606061,
+        "citation_precision": 0.4,
+        "citation_recall": 1.0,
+        "abstention_correct": 1.0,
+        "unsupported_answer_rate": 0.0
+      }
+    },
+    {
+      "id": "RET-004",
+      "question": "What is the employee bonus percentage?",
+      "answer": "I cannot find this information in the provided documents.",
+      "answerable": false,
+      "metrics": {
+        "token_f1": 0.0,
+        "rouge_l_f1": 0.0,
+        "faithfulness_lexical": 0.0,
+        "answer_relevancy_lexical": 0.0,
+        "citation_precision": 1.0,
+        "citation_recall": 1.0,
+        "abstention_correct": 1.0,
+        "unsupported_answer_rate": 0.0
+      }
+    }
+  ],
+  "failures": []
+}
