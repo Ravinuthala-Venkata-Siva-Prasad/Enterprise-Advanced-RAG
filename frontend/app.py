@@ -1,14 +1,27 @@
 
+import sys
 import uuid
+from pathlib import Path
+
 import requests
 import streamlit as st
+
+
+# ============================================================
+# 0. PROJECT PATH CONFIGURATION
+# ============================================================
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from frontend.api_client import RAGAPIClient
 
 
-# ==================================================
+# ============================================================
 # 1. PAGE CONFIGURATION
-# ==================================================
+# ============================================================
 
 st.set_page_config(
     page_title="Enterprise Advanced RAG",
@@ -17,9 +30,9 @@ st.set_page_config(
 )
 
 
-# ==================================================
+# ============================================================
 # 2. SESSION STATE INITIALIZATION
-# ==================================================
+# ============================================================
 
 if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
@@ -36,9 +49,9 @@ if "upload_success" not in st.session_state:
 client = st.session_state.api_client
 
 
-# ==================================================
+# ============================================================
 # 3. HELPER FUNCTIONS
-# ==================================================
+# ============================================================
 
 def get_valid_sources(sources):
     """
@@ -139,9 +152,9 @@ def display_index_statistics():
         )
 
 
-# ==================================================
+# ============================================================
 # 4. SIDEBAR
-# ==================================================
+# ============================================================
 
 with st.sidebar:
 
@@ -153,9 +166,9 @@ with st.sidebar:
 
     st.divider()
 
-    # ----------------------------------------------
+    # --------------------------------------------------------
     # API CONNECTION STATUS
-    # ----------------------------------------------
+    # --------------------------------------------------------
 
     st.subheader("🔌 Connection Status")
 
@@ -181,9 +194,9 @@ with st.sidebar:
 
     st.divider()
 
-    # ----------------------------------------------
+    # --------------------------------------------------------
     # INDEX STATISTICS
-    # ----------------------------------------------
+    # --------------------------------------------------------
 
     st.subheader("📊 Index Statistics")
 
@@ -199,9 +212,9 @@ with st.sidebar:
 
     st.divider()
 
-    # ----------------------------------------------
+    # --------------------------------------------------------
     # DOCUMENT UPLOAD
-    # ----------------------------------------------
+    # --------------------------------------------------------
 
     st.subheader("📁 Upload Documents")
 
@@ -333,84 +346,160 @@ with st.sidebar:
 
     st.divider()
 
-    # ----------------------------------------------
+    # --------------------------------------------------------
     # DOCUMENT MANAGEMENT
-    # ----------------------------------------------
+    # --------------------------------------------------------
 
     st.subheader("🗂️ Document Management")
 
     if api_connected:
+
         try:
+
             documents = client.get_documents()
-            st.caption(f"Registered documents: {len(documents)}")
+
+            st.caption(
+                f"Registered documents: {len(documents)}"
+            )
 
             if documents:
+
                 display_rows = [
                     {
                         "Filename": item.get("filename", ""),
                         "Document ID": item.get("document_id", ""),
                         "Chunks": item.get("total_chunks", 0),
                         "Status": item.get("status", "unknown"),
-                        "Uploaded": item.get("uploaded_at", "")[:19].replace("T", " "),
+                        "Uploaded": item.get(
+                            "uploaded_at", ""
+                        )[:19].replace("T", " ")
                     }
                     for item in documents
                 ]
-                st.dataframe(display_rows, use_container_width=True, hide_index=True)
+
+                st.dataframe(
+                    display_rows,
+                    use_container_width=True,
+                    hide_index=True
+                )
 
                 document_options = {
-                    f"{item.get('filename')} ({item.get('document_id')})": item.get("document_id")
+                    f"{item.get('filename')} "
+                    f"({item.get('document_id')})":
+                    item.get("document_id")
                     for item in documents
                 }
+
                 selected_label = st.selectbox(
                     "Select a document to delete",
                     options=list(document_options.keys()),
-                    key="delete_document_selection",
+                    key="delete_document_selection"
                 )
-                selected_document_id = document_options[selected_label]
+
+                selected_document_id = document_options[
+                    selected_label
+                ]
 
                 if st.button(
                     "Prepare document deletion",
-                    use_container_width=True,
+                    use_container_width=True
                 ):
-                    st.session_state["pending_delete_document_id"] = selected_document_id
+
+                    st.session_state[
+                        "pending_delete_document_id"
+                    ] = selected_document_id
+
                     st.rerun()
 
-                if st.session_state.get("pending_delete_document_id") == selected_document_id:
+                if (
+                    st.session_state.get(
+                        "pending_delete_document_id"
+                    ) == selected_document_id
+                ):
+
                     st.warning(
-                        "This permanently removes the uploaded file and its indexed chunks from FAISS and BM25."
+                        "This permanently removes the uploaded "
+                        "file and its indexed chunks from FAISS and BM25."
                     )
+
                     confirm_col, cancel_col = st.columns(2)
-                    if confirm_col.button("Confirm deletion", type="primary", use_container_width=True):
+
+                    if confirm_col.button(
+                        "Confirm deletion",
+                        type="primary",
+                        use_container_width=True
+                    ):
+
                         try:
-                            deleted = client.delete_document(selected_document_id)
-                            st.session_state.pop("pending_delete_document_id", None)
+
+                            deleted = client.delete_document(
+                                selected_document_id
+                            )
+
+                            st.session_state.pop(
+                                "pending_delete_document_id",
+                                None
+                            )
+
                             st.success(
                                 f"Deleted {deleted.get('filename')}. "
                                 f"Removed {deleted.get('removed_chunks', 0)} chunks."
                             )
+
                             st.rerun()
+
                         except requests.HTTPError as exc:
+
                             detail = "Document deletion failed."
+
                             try:
-                                detail = exc.response.json().get("detail", detail)
+
+                                detail = exc.response.json().get(
+                                    "detail",
+                                    detail
+                                )
+
                             except Exception:
                                 pass
+
                             st.error(detail)
-                    if cancel_col.button("Cancel", use_container_width=True):
-                        st.session_state.pop("pending_delete_document_id", None)
+
+                    if cancel_col.button(
+                        "Cancel",
+                        use_container_width=True
+                    ):
+
+                        st.session_state.pop(
+                            "pending_delete_document_id",
+                            None
+                        )
+
                         st.rerun()
+
             else:
-                st.info("No documents are registered yet. Upload a document to begin.")
+
+                st.info(
+                    "No documents are registered yet. "
+                    "Upload a document to begin."
+                )
+
         except requests.RequestException as exc:
-            st.warning(f"Could not load document history: {exc}")
+
+            st.warning(
+                f"Could not load document history: {exc}"
+            )
+
     else:
-        st.info("Connect the API to manage documents.")
+
+        st.info(
+            "Connect the API to manage documents."
+        )
 
     st.divider()
 
-    # ----------------------------------------------
+    # --------------------------------------------------------
     # CONVERSATION MANAGEMENT
-    # ----------------------------------------------
+    # --------------------------------------------------------
 
     st.subheader("💬 Conversation")
 
@@ -444,9 +533,9 @@ with st.sidebar:
 
     st.divider()
 
-    # ----------------------------------------------
+    # --------------------------------------------------------
     # PROJECT FEATURES
-    # ----------------------------------------------
+    # --------------------------------------------------------
 
     st.subheader("🚀 Project Features")
 
@@ -464,9 +553,9 @@ with st.sidebar:
     """)
 
 
-# ==================================================
+# ============================================================
 # 5. MAIN HEADER
-# ==================================================
+# ============================================================
 
 st.title(
     "🧠 Enterprise Advanced RAG"
@@ -480,9 +569,9 @@ st.write(
 st.divider()
 
 
-# ==================================================
+# ============================================================
 # 6. DISPLAY CHAT HISTORY
-# ==================================================
+# ============================================================
 
 for message in st.session_state.messages:
 
@@ -510,24 +599,24 @@ for message in st.session_state.messages:
             )
 
 
-# ==================================================
+# ============================================================
 # 7. CHAT INPUT
-# ==================================================
+# ============================================================
 
 question = st.chat_input(
     "Ask a question about your documents..."
 )
 
 
-# ==================================================
+# ============================================================
 # 8. PROCESS USER QUESTION
-# ==================================================
+# ============================================================
 
 if question:
 
-    # ----------------------------------------------
+    # --------------------------------------------------------
     # SAVE USER MESSAGE
-    # ----------------------------------------------
+    # --------------------------------------------------------
 
     st.session_state.messages.append({
 
@@ -541,9 +630,9 @@ if question:
 
         st.markdown(question)
 
-    # ----------------------------------------------
+    # --------------------------------------------------------
     # GENERATE ASSISTANT RESPONSE
-    # ----------------------------------------------
+    # --------------------------------------------------------
 
     with st.chat_message("assistant"):
 
@@ -562,9 +651,9 @@ if question:
 
                 )
 
-                # ----------------------------------
+                # ------------------------------------------------
                 # EXTRACT API RESPONSE
-                # ----------------------------------
+                # ------------------------------------------------
 
                 answer = result.get(
                     "answer",
@@ -580,29 +669,29 @@ if question:
                     "rewritten_question"
                 )
 
-                # ----------------------------------
+                # ------------------------------------------------
                 # DISPLAY ANSWER
-                # ----------------------------------
+                # ------------------------------------------------
 
                 st.markdown(answer)
 
-                # ----------------------------------
+                # ------------------------------------------------
                 # DISPLAY RETRIEVED SOURCES
-                # ----------------------------------
+                # ------------------------------------------------
 
                 display_sources(sources)
 
-                # ----------------------------------
+                # ------------------------------------------------
                 # DISPLAY REWRITTEN QUERY
-                # ----------------------------------
+                # ------------------------------------------------
 
                 display_search_query(
                     rewritten_question
                 )
 
-                # ----------------------------------
+                # ------------------------------------------------
                 # SAVE ASSISTANT MESSAGE
-                # ----------------------------------
+                # ------------------------------------------------
 
                 valid_sources = get_valid_sources(
                     sources
@@ -620,9 +709,9 @@ if question:
 
                 })
 
-            # --------------------------------------
+            # ----------------------------------------------------
             # ERROR HANDLING
-            # --------------------------------------
+            # ----------------------------------------------------
 
             except requests.exceptions.Timeout:
 

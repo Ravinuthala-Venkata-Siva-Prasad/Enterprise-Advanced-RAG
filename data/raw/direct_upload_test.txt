@@ -1,1 +1,0 @@
-Enterprise RAG upload verification test. Document ID: DIRECT-UPLOAD-001. This document tests the upload API and document registry.

@@ -1,8 +1,0 @@
-Incident Response Procedure
-Document ID: NS-006
-Department: Security
-Owner: Security Team
-
-Report suspected security incidents to the Security Team as soon as possible. Include the time detected, affected system, observed symptoms, and actions already taken. Do not delete logs or attempt independent remediation unless instructed by the incident lead.
-
-Synthetic sample content; not a real company policy.

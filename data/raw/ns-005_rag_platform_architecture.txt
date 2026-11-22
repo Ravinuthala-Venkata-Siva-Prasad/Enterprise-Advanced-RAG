@@ -1,8 +1,0 @@
-RAG Platform Architecture
-Document ID: NS-005
-Department: Applied AI
-Owner: AI Platform Team
-
-The RAG platform ingests PDF, DOCX, TXT, CSV, and HTML. Documents are parsed, enriched with source metadata, and split into chunks. Initial chunking is 800 characters with 120 characters overlap. Embeddings are stored in FAISS. Hybrid retrieval combines vector similarity with BM25 keyword search. Rerank candidates before generation when configured. Answers must cite sources and abstain when evidence is insufficient.
-
-Synthetic sample content; not a real company policy.

@@ -1,7 +1,0 @@
-﻿Document ID: STREAMLIT-TEST-002
-
-This document tests the Streamlit upload interface.
-
-The Enterprise Advanced RAG project supports incremental indexing with FAISS and BM25.
-
-The application uses hybrid retrieval to search enterprise documents.
