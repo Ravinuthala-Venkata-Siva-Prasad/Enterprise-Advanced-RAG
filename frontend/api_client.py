@@ -1,10 +1,5 @@
 import requests
 
-from .config import (
-    CHAT_ENDPOINT,
-    HEALTH_ENDPOINT,
-    API_BASE_URL,
-)
 from frontend.config import (
     CHAT_ENDPOINT,
     HEALTH_ENDPOINT,

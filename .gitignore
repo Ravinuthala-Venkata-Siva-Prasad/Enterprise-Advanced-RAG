@@ -33,4 +33,14 @@ htmlcov/
 !.env.example
 .venv/
 __pycache__/
+
 .pytest_cache/
+ # User data
+data/uploads/
+data/conversations/
+data/raw/
+
+# Generated runtime files
+*.db
+*.sqlite
+*.sqlite3

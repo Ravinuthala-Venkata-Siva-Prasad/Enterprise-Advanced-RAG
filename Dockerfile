@@ -6,23 +6,33 @@ WORKDIR /app
 ENV PYTHONPATH=/app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV PIP_DEFAULT_TIMEOUT=300
+ENV PIP_RETRIES=10
+ENV RAG_API_URL=http://127.0.0.1:8000
 
-# Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
+    curl \
+    libgomp1 \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+RUN pip install \
+    --no-cache-dir \
+    --retries 10 \
+    --timeout 300 \
+    -r requirements.txt
 
-# Copy application source
 COPY . .
 
-# Expose API and frontend ports
-EXPOSE 8000 8501
+RUN mkdir -p \
+    /app/data/vectorstore \
+    /app/data/conversations \
+    /app/data/uploads \
+    /app/data/raw \
+    /app/data/processed
 
-# Start FastAPI by default
-CMD ["uvicorn", "api.main:build_production_app", "--factory", "--host", "0.0.0.0", "--port", "8000"]
+EXPOSE 7860
+
+CMD ["/bin/bash", "/app/start.sh"]

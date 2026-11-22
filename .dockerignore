@@ -1,13 +1,57 @@
-.venv/
-venv/
-__pycache__/
-*.pyc
-.pytest_cache/
-.git/
-.gitignore
+
+# Environment and secrets
 .env
 .env.*
 !.env.example
+*.pem
+*.key
+secrets/
+credentials/
+
+# Python
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE and Git
 .vscode/
+.idea/
+.github/
 .ipynb_checkpoints/
+
+# Testing and reports
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+reports/logs/*.log
 *.log
+logs/
+
+# Generated files
+*.pkl
+.DS_Store
+Thumbs.db
+
+# Exclude runtime and private data
+data/conversations/
+data/uploads/
+data/raw/
+data/processed/
+
+# Exclude generated embeddings initially
+data/embeddings/
+
+# Keep evaluation dataset
+!data/evaluation/
+!data/evaluation/qa_dataset.json
+
+# Keep selected vector store files
+!data/vectorstore/
+!data/vectorstore/index.faiss
+!data/vectorstore/documents.jsonl
+!data/vectorstore/metadata.json
