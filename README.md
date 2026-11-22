@@ -1,177 +1,329 @@
-# Enterprise Advanced RAG System
+# Enterprise Advanced RAG
+### AI-Powered Enterprise Document Intelligence Using Hybrid Retrieval and Generative AI
 
-<p align="center">
-  <b>Building an Intelligent Enterprise Document Question-Answering System Using Hybrid Retrieval and Generative AI</b>
-</p>
+[![Enterprise Advanced RAG CI](https://github.com/Ravinuthala-Venkata-Siva-Prasad/Enterprise-Advanced-RAG/actions/workflows/ci.yml/badge.svg)](https://github.com/Ravinuthala-Venkata-Siva-Prasad/Enterprise-Advanced-RAG/actions)
+[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/API-FastAPI-009688.svg)](https://fastapi.tiangolo.com/)
+[![Streamlit](https://img.shields.io/badge/Frontend-Streamlit-FF4B4B.svg)](https://streamlit.io/)
+[![Docker](https://img.shields.io/badge/Container-Docker-2496ED.svg)](https://www.docker.com/)
+[![AWS](https://img.shields.io/badge/Cloud-AWS-FF9900.svg)](https://aws.amazon.com/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 
-<p align="center">
-  <a href="https://github.com/Ravinuthala-Venkata-Siva-Prasad/Enterprise-Advanced-RAG">GitHub Repository</a> •
-  <a href="http://localhost:8501">Streamlit Application</a> •
-  <a href="http://localhost:8000/docs">FastAPI Documentation</a>
-</p>
+**Enterprise Advanced RAG** is an end-to-end Retrieval-Augmented Generation platform designed to search enterprise documents and generate context-grounded answers with source references.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.11-blue?logo=python" />
-  <img src="https://img.shields.io/badge/LLM-Groq-orange" />
-  <img src="https://img.shields.io/badge/Vector%20Database-FAISS-green" />
-  <img src="https://img.shields.io/badge/Retrieval-Hybrid%20Search-purple" />
-  <img src="https://img.shields.io/badge/API-FastAPI-teal?logo=fastapi" />
-  <img src="https://img.shields.io/badge/Frontend-Streamlit-red?logo=streamlit" />
-  <img src="https://img.shields.io/badge/Tests-110%20Passed-brightgreen" />
-</p>
+The system combines dense vector search, sparse keyword retrieval, Reciprocal Rank Fusion, Cross-Encoder reranking, and Groq-powered LLM generation to improve document question answering.
+
+| Resource | Link |
+|---|---|
+| GitHub Repository | [Enterprise Advanced RAG](https://github.com/Ravinuthala-Venkata-Siva-Prasad/Enterprise-Advanced-RAG) |
+| Live Application | [Open RAG Application](http://3.27.213.85) |
+| GitHub Actions | [CI Workflow](https://github.com/Ravinuthala-Venkata-Siva-Prasad/Enterprise-Advanced-RAG/actions) |
+| License | [Apache 2.0](LICENSE) |
+
+---
+
+## Table of Contents
+
+1. [Project Overview](#1-project-overview)
+2. [Key Features](#2-key-features)
+3. [Application Screenshots](#3-application-screenshots)
+4. [System Architecture](#4-system-architecture)
+5. [RAG Workflow](#5-rag-workflow)
+6. [Technology Stack](#6-technology-stack)
+7. [Project Structure](#7-project-structure)
+8. [Installation and Setup](#8-installation-and-setup)
+9. [Running the Application](#9-running-the-application)
+10. [API Documentation](#10-api-documentation)
+11. [Evaluation Framework](#11-evaluation-framework)
+12. [Benchmark Results](#12-benchmark-results)
+13. [Automated Testing](#13-automated-testing)
+14. [Docker Deployment](#14-docker-deployment)
+15. [AWS Deployment Architecture](#15-aws-deployment-architecture)
+16. [GitHub Actions and CI/CD](#16-github-actions-and-cicd)
+17. [Security and Engineering Considerations](#17-security-and-engineering-considerations)
+18. [Limitations and Future Improvements](#18-limitations-and-future-improvements)
+19. [What I Learned](#19-what-i-learned)
+20. [License](#20-license)
 
 ---
 
 ## 1. Project Overview
 
-**Enterprise Advanced RAG** is an end-to-end Retrieval-Augmented Generation application that enables users to upload enterprise documents, search information, and receive context-grounded answers through a conversational interface.
+Traditional LLM applications can generate answers without access to private organizational documents. Retrieval-Augmented Generation addresses this limitation by retrieving relevant information from a knowledge base before generating a response.
 
-Traditional LLM applications can generate answers without access to an organization's private documents. This project addresses that limitation by implementing a document retrieval pipeline that retrieves relevant information before generating responses.
+This project implements an enterprise-oriented RAG pipeline that allows users to:
 
-The system combines:
+- Upload documents in multiple formats.
+- Extract and process document content.
+- Generate embeddings and build a FAISS vector index.
+- Retrieve information through semantic and keyword search.
+- Combine retrieval results using Reciprocal Rank Fusion.
+- Rerank retrieved passages using a Cross-Encoder.
+- Generate context-grounded answers using Groq LLMs.
+- View supporting document references.
+- Maintain conversational history.
+- Evaluate retrieval and answer quality.
 
-- Dense vector retrieval using FAISS.
-- Sparse keyword retrieval using BM25.
-- Reciprocal Rank Fusion (RRF).
-- Cross-Encoder reranking.
-- Groq-powered LLM response generation.
-- Source attribution and answer evaluation.
-- Conversational memory and document management.
+### Main objectives
 
-The application supports multiple document formats and provides both a Streamlit frontend and a FastAPI backend.
+- Build a modular and maintainable RAG architecture.
+- Improve retrieval through hybrid search.
+- Improve context relevance through reranking.
+- Generate answers grounded in retrieved evidence.
+- Support document management and incremental indexing.
+- Measure retrieval and answer quality through evaluation metrics.
+- Deploy the application using Docker and AWS infrastructure.
 
-## 2. What I Built
+---
 
-I implemented the complete RAG workflow, from document ingestion to answer generation and evaluation.
+## 2. Key Features
 
-| Module | What I implemented |
+| Module | Implemented functionality |
 |---|---|
-| Document ingestion | PDF, DOCX, TXT, CSV and HTML loaders |
-| Document processing | Text cleaning, parsing and chunking |
-| Embeddings | Sentence Transformer embedding generation |
-| Vector storage | FAISS indexing and similarity search |
-| Sparse retrieval | BM25 keyword-based retrieval |
-| Hybrid retrieval | Dense and sparse result fusion using RRF |
+| Document ingestion | PDF, DOCX, TXT, CSV and HTML |
+| Document processing | Parsing, cleaning and chunking |
+| Embeddings | Sentence Transformer embeddings |
+| Vector retrieval | FAISS similarity search |
+| Sparse retrieval | BM25 keyword search |
+| Hybrid retrieval | Dense and sparse retrieval fusion |
+| Ranking | Reciprocal Rank Fusion |
 | Reranking | Cross-Encoder relevance scoring |
-| Deduplication | Removal of highly similar retrieved passages |
-| LLM generation | Groq-based context-grounded responses |
+| Deduplication | Removal of highly similar passages |
+| LLM generation | Groq-powered answer generation |
+| Source attribution | Document source references |
 | Guardrails | Input validation, injection detection and output checks |
 | Conversational memory | SQLite session-based conversation storage |
 | Query rewriting | Context-aware conversational query rewriting |
-| Document management | Upload, list, inspect and delete documents |
-| Backend | REST API using FastAPI |
-| Frontend | Interactive application using Streamlit |
-| Evaluation | Retrieval metrics and answer-quality metrics |
+| Document management | Upload, list, inspect and delete |
+| Backend | FastAPI REST API |
+| Frontend | Streamlit interface |
+| Evaluation | Retrieval and answer-quality metrics |
+| Testing | Pytest automated tests |
+| Containerization | Docker |
+| Cloud deployment | AWS EC2 and Amazon ECR |
+
+---
 
 ## 3. Application Screenshots
 
-### Enterprise RAG Dashboard
+Add your actual application screenshots to `docs/images/` using the filenames below.
 
-The dashboard provides API connection status, FAISS and BM25 statistics, document management and the conversational question-answering interface.
+### 3.1 Enterprise RAG Dashboard
+
+The dashboard provides API connection status, document statistics, FAISS and BM25 information, document management and conversational question answering.
 
 ![Enterprise RAG Dashboard](docs/images/dashboard-overview.png)
 
-### Document Upload and RAG Chat
+### 3.2 Document Upload and RAG Chat
 
-Users can upload enterprise documents and ask questions. The system retrieves supporting content and generates answers with document source references.
+Users can upload documents and ask questions. The RAG pipeline retrieves relevant content and generates answers with source references.
 
-![Document Upload and Conversational RAG](docs/images/document-upload-and-chat.png)
+![Document Upload and RAG Chat](docs/images/document-upload-and-chat.png)
 
-### FastAPI Swagger Documentation
+### 3.3 FastAPI Swagger Documentation
 
-The backend exposes REST endpoints for chat, document uploads, document management and session operations.
+The FastAPI backend exposes REST endpoints for chat, document uploads, document management and session operations.
 
-![FastAPI Swagger API](docs/images/fastapi-swagger-api.png)
+![FastAPI Swagger Documentation](docs/images/fastapi-swagger-api.png)
+
+---
 
 ## 4. System Architecture
 
-```text
-                   USER
-                     |
-                     v
-              STREAMLIT FRONTEND
-                     |
-                     v
-                FASTAPI BACKEND
-                     |
-                     v
-             CONVERSATIONAL RAG
-                     |
-             +-------+-------+
-             |               |
-             v               v
-       QUERY REWRITING   SQLITE MEMORY
-             |
-             v
-        HYBRID RETRIEVAL
-             |
-       +-----+-----+
-       |           |
-       v           v
-     FAISS        BM25
-     DENSE       SPARSE
-       |           |
-       +-----+-----+
-             |
-             v
-          RRF FUSION
-             |
-             v
-      CROSS-ENCODER
-        RERANKING
-             |
-             v
-       DEDUPLICATION
-             |
-             v
-       CONTEXT BUILDER
-             |
-             v
-          GROQ LLM
-             |
-             v
-      ANSWER + SOURCES
-             |
-             v
-            USER
+The application follows a modular architecture separating the user interface, API, retrieval pipeline, document processing, storage and LLM generation.
+
+### 4.1 High-Level Application Architecture
+
+```mermaid
+flowchart TB
+    USER(["User"])
+
+    subgraph PRESENTATION["Presentation Layer"]
+        UI["Streamlit Frontend"]
+    end
+
+    subgraph API["API Layer"]
+        FASTAPI["FastAPI Backend"]
+        ROUTES["API Routes and Schemas"]
+    end
+
+    subgraph RAG["RAG Orchestration Layer"]
+        PIPELINE["Conversational RAG Pipeline"]
+        REWRITE["Query Rewriting"]
+        MEMORY["SQLite Conversation Memory"]
+        GUARD["Input and Output Guardrails"]
+    end
+
+    subgraph RETRIEVAL["Hybrid Retrieval Layer"]
+        DENSE["FAISS Dense Retrieval"]
+        SPARSE["BM25 Sparse Retrieval"]
+        RRF["Reciprocal Rank Fusion"]
+        RERANK["Cross-Encoder Reranking"]
+        DEDUP["Passage Deduplication"]
+        CONTEXT["Context Builder"]
+    end
+
+    subgraph GENERATION["Generation Layer"]
+        GROQ["Groq LLM"]
+        ANSWER["Answer and Source References"]
+    end
+
+    subgraph KNOWLEDGE["Knowledge and Storage"]
+        INGEST["Document Ingestion"]
+        PARSE["Document Parsing and Chunking"]
+        EMBED["Sentence Transformer Embeddings"]
+        INDEX["FAISS and BM25 Indexes"]
+        FILES["Uploaded Documents and Application Data"]
+    end
+
+    USER --> UI
+    UI --> FASTAPI
+    FASTAPI --> ROUTES
+    ROUTES --> PIPELINE
+
+    PIPELINE --> GUARD
+    GUARD --> REWRITE
+    REWRITE <--> MEMORY
+    REWRITE --> DENSE
+    REWRITE --> SPARSE
+
+    DENSE --> RRF
+    SPARSE --> RRF
+    RRF --> RERANK
+    RERANK --> DEDUP
+    DEDUP --> CONTEXT
+
+    CONTEXT --> GROQ
+    GROQ --> ANSWER
+    ANSWER --> GUARD
+    GUARD --> FASTAPI
+    FASTAPI --> UI
+    UI --> USER
+
+    INGEST --> PARSE
+    PARSE --> EMBED
+    EMBED --> INDEX
+    INDEX --> DENSE
+    INDEX --> SPARSE
+    FILES --> INGEST
 ```
 
-### Retrieval Workflow
+### 4.2 Document Ingestion Architecture
 
-1. The user submits a question.
-2. The system processes the query and uses conversation history when applicable.
-3. FAISS retrieves semantically similar document chunks.
-4. BM25 retrieves keyword-relevant document chunks.
-5. RRF combines the dense and sparse rankings.
-6. A Cross-Encoder reranks the candidate passages.
-7. Similar passages are removed through deduplication.
-8. The context builder prepares the retrieved evidence.
-9. Groq generates an answer using the supplied context.
-10. The response includes source references and is processed through the configured guardrails.
+```mermaid
+flowchart TD
+    A["Document Upload"] --> B["File Validation"]
+    B --> C["Document Loader"]
+    C --> D["Text Extraction"]
+    D --> E["Text Cleaning"]
+    E --> F["Text Chunking"]
+    F --> G["Sentence Transformer Embeddings"]
+    G --> H["FAISS Vector Index"]
+    F --> I["BM25 Index"]
+    H --> J["Persistent Application Storage"]
+    I --> J
+```
 
-## 5. Technology Stack
+### 4.3 Query and Retrieval Architecture
+
+```mermaid
+flowchart TD
+    A["User Question"] --> B["Query Processing"]
+    B --> C["Conversation Context"]
+    C --> D["Query Rewriting"]
+    D --> E["Hybrid Retrieval"]
+
+    E --> F["FAISS Dense Search"]
+    E --> G["BM25 Keyword Search"]
+
+    F --> H["Reciprocal Rank Fusion"]
+    G --> H
+
+    H --> I["Cross-Encoder Reranking"]
+    I --> J["Deduplication"]
+    J --> K["Context Construction"]
+    K --> L["Groq LLM"]
+    L --> M["Grounded Answer"]
+    M --> N["Source References"]
+    N --> O["User"]
+```
+
+---
+
+## 5. RAG Workflow
+
+The application follows these steps when answering a question.
+
+1. The user submits a question through Streamlit.
+2. Streamlit sends the request to the FastAPI backend.
+3. The RAG pipeline processes the question.
+4. Conversation history is considered when applicable.
+5. Query rewriting improves contextual understanding.
+6. FAISS performs semantic retrieval.
+7. BM25 performs keyword-based retrieval.
+8. Reciprocal Rank Fusion combines the retrieval rankings.
+9. A Cross-Encoder reranks the retrieved passages.
+10. Duplicate or highly similar passages are removed.
+11. The context builder prepares the retrieved evidence.
+12. The Groq LLM generates an answer using the available context.
+13. Guardrails process the response.
+14. The application returns the answer with source references.
+
+### Retrieval strategy
+
+**Dense retrieval — FAISS**
+
+Uses vector embeddings to retrieve semantically similar document passages.
+
+**Sparse retrieval — BM25**
+
+Uses keyword relevance to retrieve passages matching the user's terminology.
+
+**Hybrid retrieval — RRF**
+
+Combines dense and sparse rankings to improve candidate retrieval.
+
+**Cross-Encoder reranking**
+
+Reevaluates retrieved question-passage pairs to improve relevance ordering.
+
+---
+
+## 6. Technology Stack
 
 | Category | Technology |
 |---|---|
-| Programming | Python 3.11 |
-| LLM Provider | Groq |
-| LLM Model | openai/gpt-oss-120b |
-| Embedding Model | sentence-transformers/all-MiniLM-L6-v2 |
-| Vector Database | FAISS |
-| Sparse Retrieval | BM25 |
-| Hybrid Ranking | Reciprocal Rank Fusion |
+| Programming language | Python 3.11 |
+| LLM provider | Groq |
+| LLM model | openai/gpt-oss-120b |
+| Embedding model | sentence-transformers/all-MiniLM-L6-v2 |
+| Vector database | FAISS |
+| Sparse retrieval | BM25 |
+| Hybrid ranking | Reciprocal Rank Fusion |
 | Reranking | Cross-Encoder |
 | Backend | FastAPI |
 | Frontend | Streamlit |
-| Conversation Storage | SQLite |
+| Conversation storage | SQLite |
 | Configuration | YAML |
 | Testing | Pytest |
-| Version Control | Git and GitHub |
+| Containerization | Docker |
+| Cloud platform | AWS |
+| Container registry | Amazon ECR |
+| Reverse proxy | Nginx |
+| Version control | Git and GitHub |
+| CI | GitHub Actions |
 
-## 6. Project Structure
+---
+
+## 7. Project Structure
 
 ```text
 Enterprise-Advanced-RAG/
+│
+├── .github/
+│   └── workflows/
+│
+├── .streamlit/
 │
 ├── api/
 │   ├── bootstrap.py
@@ -188,17 +340,6 @@ Enterprise-Advanced-RAG/
 │   ├── model_config.yaml
 │   └── retrieval_config.yaml
 │
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   ├── embeddings/
-│   ├── vectorstore/
-│   ├── evaluation/
-│   ├── conversations/
-│   └── uploads/
-│
-├── deployment/
-│
 ├── docs/
 │   └── images/
 │       ├── dashboard-overview.png
@@ -209,8 +350,6 @@ Enterprise-Advanced-RAG/
 │   ├── app.py
 │   ├── api_client.py
 │   └── config.py
-│
-├── notebooks/
 │
 ├── reports/
 │   └── evaluation/
@@ -238,14 +377,23 @@ Enterprise-Advanced-RAG/
 │   └── vectorstores/
 │
 ├── tests/
-├── main.py
-├── requirements.txt
+│
+├── .dockerignore
 ├── .env.example
 ├── .gitignore
+├── Dockerfile
+├── Dockerfile.cpu
+├── docker-compose.yml
+├── main.py
+├── requirements.txt
+├── start.sh
+├── LICENSE
 └── README.md
 ```
 
-## 7. Installation and Setup
+---
+
+## 8. Installation and Setup
 
 ### Prerequisites
 
@@ -256,7 +404,7 @@ Enterprise-Advanced-RAG/
 
 ### Step 1: Clone the repository
 
-```powershell
+```bash
 git clone https://github.com/Ravinuthala-Venkata-Siva-Prasad/Enterprise-Advanced-RAG.git
 
 cd Enterprise-Advanced-RAG
@@ -264,19 +412,27 @@ cd Enterprise-Advanced-RAG
 
 ### Step 2: Create a virtual environment
 
-```powershell
+```bash
 python -m venv .venv
 ```
 
 ### Step 3: Activate the environment
 
+**Windows PowerShell**
+
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
+**Linux / macOS**
+
+```bash
+source .venv/bin/activate
+```
+
 ### Step 4: Install dependencies
 
-```powershell
+```bash
 python -m pip install --upgrade pip
 
 pip install -r requirements.txt
@@ -290,38 +446,42 @@ Create a `.env` file in the project root.
 GROQ_API_KEY=your_groq_api_key
 ```
 
-Use the variable names required by your application configuration.
+Use any additional environment variables required by your application configuration.
 
-Never upload `.env` or API credentials to GitHub.
+**Important:** Never commit `.env`, API credentials, passwords or private deployment configuration to GitHub.
 
-## 8. Run the Application
+---
 
-### Start the FastAPI backend
+## 9. Running the Application
 
-```powershell
+Run the backend and frontend in separate terminals.
+
+### Terminal 1: FastAPI backend
+
+```bash
 uvicorn api.main:build_production_app --factory --host 127.0.0.1 --port 8000
 ```
 
-### Start the Streamlit frontend
+### Terminal 2: Streamlit frontend
 
-Open another terminal:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-
+```bash
 streamlit run frontend/app.py
 ```
 
-### Application URLs
+### Local application URLs
 
 | Service | URL |
 |---|---|
-| Streamlit Frontend | http://localhost:8501 |
-| FastAPI Backend | http://127.0.0.1:8000 |
-| API Health Check | http://127.0.0.1:8000/health |
-| Swagger Documentation | http://127.0.0.1:8000/docs |
+| Streamlit frontend | http://localhost:8501 |
+| FastAPI backend | http://127.0.0.1:8000 |
+| API health | http://127.0.0.1:8000/health |
+| Swagger documentation | http://127.0.0.1:8000/docs |
 
-## 9. API Endpoints
+---
+
+## 10. API Documentation
+
+The FastAPI backend provides REST endpoints for conversational question answering and document management.
 
 | Method | Endpoint | Description |
 |---|---|---|
@@ -334,26 +494,25 @@ streamlit run frontend/app.py
 | GET | `/api/v1/documents/{document_id}` | Retrieve document details |
 | DELETE | `/api/v1/documents/{document_id}` | Delete a registered document |
 
-Interactive documentation is available at:
+### Swagger API documentation
 
+When running locally:
+
+```text
 http://127.0.0.1:8000/docs
+```
 
-## 10. Evaluation and Benchmark Results
+The public API documentation route should be published only after the reverse-proxy route is configured and verified.
 
-Evaluation is an important part of this project. I implemented separate evaluation workflows for retrieval quality and generated answer quality.
+---
 
-The current synthetic evaluation dataset contains four questions:
+## 11. Evaluation Framework
 
-| Test ID | Question Category | Expected Behaviour |
-|---|---|---|
-| Q001 | Information Security / MFA | Retrieve policy and answer |
-| Q002 | Remote Work Policy | Retrieve policy and answer |
-| Q003 | Business Expense Policy | Retrieve policy and answer |
-| RET-004 | Employee Bonus Percentage | Abstain because information is unavailable |
+The project implements separate evaluation workflows for retrieval quality and generated answer quality.
 
-### A. Retrieval Evaluation
+### Retrieval evaluation
 
-The retrieval evaluator measures whether the system retrieves relevant documents and ranks them correctly.
+Measures whether relevant document passages are retrieved and ranked correctly.
 
 Implemented metrics:
 
@@ -363,7 +522,41 @@ Implemented metrics:
 - Mean Reciprocal Rank (MRR)
 - Normalized Discounted Cumulative Gain (NDCG)
 
-**Recorded retrieval benchmark:**
+### Answer evaluation
+
+Measures generated answer quality against reference answers and retrieved evidence.
+
+Implemented metrics:
+
+- Token F1
+- ROUGE-L F1
+- Lexical Faithfulness
+- Lexical Answer Relevancy
+- Citation Precision
+- Citation Recall
+- Abstention Correctness
+- Unsupported Answer Rate
+
+### Evaluation dataset
+
+The recorded synthetic evaluation dataset contains four questions.
+
+| Test ID | Category | Expected behaviour |
+|---|---|---|
+| Q001 | Information Security / MFA | Retrieve policy and answer |
+| Q002 | Remote Work Policy | Retrieve policy and answer |
+| Q003 | Business Expense Policy | Retrieve policy and answer |
+| RET-004 | Employee Bonus Percentage | Abstain because information is unavailable |
+
+---
+
+## 12. Benchmark Results
+
+The following results are taken from the recorded evaluation reports in the repository. They are preliminary results, not independently validated production benchmarks.
+
+### 12.1 Retrieval evaluation
+
+Recorded run: November 21, 2026.
 
 | Metric | Result |
 |---|---:|
@@ -381,24 +574,9 @@ Implemented metrics:
 | NDCG@5 | 0.9732 |
 | MRR | 1.0000 |
 
-These values are from the recorded retrieval evaluation run on November 21, 2026.
+### 12.2 Answer evaluation
 
-### B. Answer Evaluation
-
-The answer evaluator measures generated answer quality against reference answers and retrieved evidence.
-
-Implemented metrics:
-
-- Token F1
-- ROUGE-L F1
-- Lexical Faithfulness
-- Lexical Answer Relevancy
-- Citation Precision
-- Citation Recall
-- Abstention Correctness
-- Unsupported Answer Rate
-
-**Latest recorded answer benchmark: November 21, 2026**
+Recorded run: November 21, 2026.
 
 | Metric | Result |
 |---|---:|
@@ -411,40 +589,40 @@ Implemented metrics:
 | Abstention Correctness | 1.0000 |
 | Unsupported Answer Rate | 0.0000 |
 
-### C. Evaluation Execution Results
+### 12.3 Evaluation execution
 
-| Evaluation Status | Count |
+| Evaluation status | Count |
 |---|---:|
-| Total Questions | 4 |
-| Successfully Evaluated | 4 |
-| Failed Evaluations | 0 |
-| Answerable Questions | 3 |
-| Unanswerable Questions | 1 |
+| Total questions | 4 |
+| Successfully evaluated | 4 |
+| Failed evaluations | 0 |
+| Answerable questions | 3 |
+| Unanswerable questions | 1 |
 
-### D. What the Evaluation Demonstrates
+### 12.4 What the results demonstrate
 
-The recorded results demonstrate that:
+The recorded evaluation demonstrates that:
 
-1. The retrieval evaluator can identify relevant sources at the top ranking positions for the tested questions.
-2. The system generated answers for the three answerable policy questions.
-3. The system correctly abstained when asked about an employee bonus percentage that was not available in the documents.
-4. The evaluation framework produces measurable retrieval and answer-quality reports.
-5. The results also expose areas requiring improvement, especially citation matching, answer relevancy and retrieval precision at larger K values.
+1. The retrieval evaluator can identify relevant sources at top ranking positions for the tested questions.
+2. The system generated answers for three answerable policy questions.
+3. The system correctly abstained when the requested bonus percentage was unavailable.
+4. The evaluation framework generates measurable retrieval and answer-quality reports.
+5. The results identify improvements needed in citation matching, answer relevancy and retrieval precision at larger K values.
 
-### E. Evaluation Limitations
+### 12.5 Evaluation limitations
 
-The current evaluation dataset contains only four synthetic questions. Therefore, these results should be considered preliminary rather than production-level performance.
+The evaluation dataset contains only four synthetic questions. Consequently, these results should be considered preliminary rather than evidence of production-level accuracy.
 
 Additional limitations:
 
-- Lexical faithfulness is not equivalent to semantic entailment or independently verified factual correctness.
-- Citation precision and recall depend on the evaluator's source-matching rules and canonical document identity.
+- Lexical faithfulness does not establish semantic entailment or factual correctness.
+- Citation precision and recall depend on source-matching rules.
 - Retrieval precision decreases as more candidate documents are included.
-- More independently labelled questions are needed to establish reliable general performance.
+- A larger independently labelled evaluation dataset is required for reliable general performance.
 
-### F. Generated Evaluation Reports
+### 12.6 Generated evaluation reports
 
-The evaluation scripts generate JSON and CSV reports.
+The repository includes recorded JSON and CSV evaluation reports.
 
 ```text
 reports/
@@ -457,19 +635,21 @@ reports/
 
 Run answer evaluation:
 
-```powershell
+```bash
 python scripts/run_answer_evaluation.py
 ```
 
 Run retrieval evaluation:
 
-```powershell
+```bash
 python scripts/run_retrieval_evaluation.py
 ```
 
-## 11. Automated Testing
+---
 
-The project includes automated tests for:
+## 13. Automated Testing
+
+The project includes automated tests covering:
 
 - Hybrid retrieval and reranking.
 - Answer and retrieval evaluation.
@@ -484,72 +664,299 @@ The project includes automated tests for:
 - Document management.
 - Duplicate passage handling.
 
-Run all tests:
+Run tests:
 
-```powershell
+```bash
 pytest tests/ -v
 ```
 
-**Latest recorded regression test result:**
+### Recorded regression test result
 
 ```text
 110 passed in 10.70s
 ```
 
-This confirms that all 110 tests passed in the recorded test run on November 21, 2026.
+This result is from the recorded November 21, 2026 test run. It should not be interpreted as the result of every subsequent code change.
 
-## 12. Security and Engineering Considerations
+---
 
-- Environment variables are used for API credentials.
-- Uploaded files are validated before processing.
-- Input validation and prompt-injection checks are implemented.
-- Source references are checked by guardrail components.
-- Document indexing supports incremental updates.
-- Session-based conversation history is stored in SQLite.
+## 14. Docker Deployment
 
-Before public deployment, additional authentication, authorization, monitoring and operational security controls should be implemented and validated.
+The project includes Docker configurations for containerized execution.
 
-## 13. Future Improvements
+### Docker files
 
-- Expand the evaluation dataset with independently verified questions and relevance labels.
-- Improve canonical source identity and citation matching.
-- Introduce semantic and claim-level factuality evaluation.
+| File | Purpose |
+|---|---|
+| `Dockerfile` | Main Docker image configuration |
+| `Dockerfile.cpu` | CPU-only Docker image configuration |
+| `docker-compose.yml` | Docker Compose configuration |
+
+### Build CPU-only image
+
+```bash
+docker build -f Dockerfile.cpu -t enterprise-advanced-rag:latest .
+```
+
+### Run the image
+
+Use the environment file and persistent data volume required by your deployment.
+
+```bash
+docker run -d \
+  --name enterprise-rag-api \
+  --env-file .env \
+  -v enterprise_rag_data:/app/data \
+  -p 127.0.0.1:8000:8000 \
+  enterprise-advanced-rag:latest \
+  uvicorn api.main:build_production_app \
+  --factory --host 0.0.0.0 --port 8000
+```
+
+The frontend is run as a separate container in the deployed architecture.
+
+**Note:** The commands above illustrate the API container setup. For an existing deployment, preserve its actual environment configuration, container networking and volume settings rather than replacing containers blindly.
+
+---
+
+## 15. AWS Deployment Architecture
+
+The application is currently deployed on AWS EC2 using Docker containers and Amazon ECR.
+
+### 15.1 Deployed infrastructure
+
+| Component | Technology |
+|---|---|
+| Cloud platform | AWS |
+| Compute | EC2 |
+| Container registry | Amazon ECR |
+| Container runtime | Docker |
+| Reverse proxy | Nginx |
+| Backend | FastAPI |
+| Frontend | Streamlit |
+| Persistent storage | Docker named volume |
+| Remote management | AWS Systems Manager |
+
+### 15.2 Deployment architecture
+
+```mermaid
+flowchart TB
+    USER(["Application User"])
+
+    subgraph AWS["AWS Cloud - ap-southeast-2"]
+        subgraph EC2["EC2 Instance"]
+            NGINX["Nginx Reverse Proxy"]
+
+            subgraph DOCKER["Docker Containers"]
+                FRONTEND["Streamlit Frontend<br/>Port 8501"]
+                API["FastAPI Backend<br/>Port 8000"]
+            end
+
+            VOLUME[("enterprise_rag_data<br/>Persistent Docker Volume")]
+        end
+
+        ECR[("Amazon ECR<br/>enterprise-advanced-rag")]
+        SSM["AWS Systems Manager"]
+    end
+
+    USER --> NGINX
+    NGINX --> FRONTEND
+    NGINX --> API
+    FRONTEND --> API
+    API --> VOLUME
+    ECR -.->|"Image source"| EC2
+    SSM -.->|"Remote management"| EC2
+```
+
+### 15.3 Current application containers
+
+| Container | Function |
+|---|---|
+| `enterprise-rag-api` | FastAPI backend |
+| `enterprise-rag-frontend` | Streamlit interface |
+
+Both containers currently use the same ECR image:
+
+```text
+316992254617.dkr.ecr.ap-southeast-2.amazonaws.com/enterprise-advanced-rag:v2
+```
+
+The API container uses the persistent Docker volume:
+
+```text
+enterprise_rag_data:/app/data
+```
+
+This volume preserves application data independently of container replacement.
+
+### 15.4 Live application
+
+```text
+http://3.27.213.85
+```
+
+The live application is currently served over HTTP. HTTPS should be treated as enabled only after the production certificate and Nginx configuration have been verified.
+
+---
+
+## 16. GitHub Actions and CI/CD
+
+The repository contains a GitHub Actions workflow named:
+
+**Enterprise Advanced RAG CI**
+
+The existing CI workflow performs:
+
+1. Repository checkout.
+2. Docker Buildx setup.
+3. CPU-only Docker image build.
+4. PyTorch CPU-only verification.
+5. API and frontend import verification.
+
+### CI workflow
+
+```mermaid
+flowchart TD
+    A["Developer pushes code to main"] --> B["GitHub Actions"]
+    B --> C["Checkout Repository"]
+    C --> D["Set up Docker Buildx"]
+    D --> E["Build CPU-only Docker Image"]
+    E --> F["Verify CPU-only PyTorch"]
+    F --> G["Verify API and Frontend Imports"]
+    G --> H["CI Result"]
+
+    H --> I["Successful Build"]
+    H --> J["Failed Build"]
+```
+
+### Current CI status
+
+The repository has recorded five successful workflow runs as of November 22, 2026.
+
+The current workflow builds and tests the Docker image. Automated ECR publishing and EC2 deployment are being configured separately.
+
+### Planned deployment automation
+
+The intended deployment workflow is:
+
+```mermaid
+flowchart TD
+    A["GitHub Push to main"] --> B["GitHub Actions"]
+    B --> C["Run CI Tests"]
+    C --> D["Authenticate to AWS using OIDC"]
+    D --> E["Build Docker Image"]
+    E --> F["Push Image to Amazon ECR"]
+    F --> G["Deploy through AWS Systems Manager"]
+    G --> H["Update EC2 Containers"]
+    H --> I["Verify Application Health"]
+```
+
+This is the planned CI/CD architecture, not a claim that automatic deployment is already complete.
+
+---
+
+## 17. Security and Engineering Considerations
+
+The project implements several application-level safeguards:
+
+- Environment variables for API credentials.
+- Uploaded file validation.
+- Input validation.
+- Prompt-injection checks.
+- Output checks.
+- Source reference validation.
+- Incremental document indexing.
+- Session-based conversation storage in SQLite.
+
+### Deployment security considerations
+
+Additional controls that should be implemented and validated before treating the application as a production enterprise service include:
+
+- Authentication and authorization.
+- Role-based document access.
+- Secure secret management.
+- HTTPS and certificate renewal verification.
+- Network access restrictions.
+- Centralized logging and monitoring.
+- Deployment rollback procedures.
+- Resource and upload limits.
+
+---
+
+## 18. Limitations and Future Improvements
+
+### Current limitations
+
+- Evaluation dataset contains only four synthetic questions.
+- Citation matching requires further improvement.
+- Answer relevancy requires improvement.
+- Retrieval precision needs further testing at larger K values.
+- Enterprise authentication and authorization require further implementation and validation.
+- Production observability and operational monitoring need further development.
+
+### Planned improvements
+
+- Expand evaluation with independently verified questions.
+- Improve canonical document identity and citation matching.
+- Add semantic and claim-level factuality evaluation.
 - Improve retrieval precision through larger-scale testing.
-- Add production observability and performance monitoring.
+- Implement production monitoring and observability.
 - Strengthen authentication and role-based document access.
 - Evaluate performance on larger enterprise document collections.
+- Complete automated GitHub Actions deployment to AWS ECR and EC2.
 
-## 14. What I Learned
+---
+
+## 19. What I Learned
 
 Through this project, I gained practical experience in:
 
 - Designing an end-to-end RAG architecture.
-- Combining semantic and keyword-based retrieval.
+- Building document ingestion and indexing workflows.
+- Combining dense and sparse retrieval.
 - Implementing Reciprocal Rank Fusion.
 - Using Cross-Encoder models for reranking.
-- Building document ingestion and indexing workflows.
 - Connecting LLMs to retrieved enterprise knowledge.
 - Implementing conversational memory and query rewriting.
-- Building REST APIs with FastAPI.
-- Developing interactive applications with Streamlit.
+- Building REST APIs using FastAPI.
+- Developing interactive applications using Streamlit.
 - Evaluating retrieval and generated answers using quantitative metrics.
 - Writing automated tests and debugging integration issues.
+- Containerizing applications with Docker.
+- Deploying applications on AWS EC2 and Amazon ECR.
+- Managing application data with persistent Docker volumes.
+- Using GitHub Actions for automated CI.
 
-## 15. Project Information
+---
+
+## 20. License
+
+This project is licensed under the Apache License 2.0.
+
+See the [LICENSE](LICENSE) file for details.
+
+---
+
+## Project Information
 
 **Project:** Enterprise Advanced RAG System
 
-**Focus:** Generative AI, Retrieval-Augmented Generation and Enterprise Document Intelligence
+**Focus:** Generative AI, Retrieval-Augmented Generation, Hybrid Search and Enterprise Document Intelligence
+
+**Developer:** Ravinuthala Venkata Siva Prasad
 
 **GitHub Repository:**
 
 https://github.com/Ravinuthala-Venkata-Siva-Prasad/Enterprise-Advanced-RAG
 
-**Disclaimer:** The included enterprise policies and evaluation data are synthetic demonstration content and do not represent actual company policies.
+**Live Application:**
+
+http://3.27.213.85
 
 ---
 
-<p align="center">
-  <b>Enterprise Advanced RAG System</b><br/>
-  Generative AI • RAG • Hybrid Search • FAISS • BM25 • Cross-Encoder • Groq • FastAPI • Streamlit
-</p>
+**Disclaimer:** The enterprise policies and evaluation data included in this project are synthetic demonstration content. They do not represent actual company policies or confidential enterprise information.
+
+---
+
+*Enterprise Advanced RAG — Generative AI • RAG • Hybrid Search • FAISS • BM25 • Cross-Encoder • Groq • FastAPI • Streamlit • Docker • AWS*
